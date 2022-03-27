@@ -1,0 +1,71 @@
+
+  <!--  -->
+  <mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+          <!-- contenu du profil -->
+      <div class="container-fluid page">
+        <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+            <div class="page__content shadow p-3 position-relative">
+              <div class="page__content-data position-absolute text-center">
+                <div class="col-md-6 offset-md-3">
+                  <h3 style="color: rgb(62, 111, 202);margin-left: -500px; font-weight: 600;font-size: 2rem;"> Modifié Formatteur </h3>
+                  <form (ngSubmit) = "onSubmit()">
+
+                    <div class="form-group">
+                          <label> UserName</label>
+                          <input type="text" class ="form-control mt-2" id = "userName"
+                              [(ngModel)] = "formatter.userName" name = "userName"
+                              required #userName="ngModel"
+                             [class.is-invalid]="userName.invalid && userName.touched">
+                             <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
+
+                      </div>
+                      <div class="form-group mt-2">
+                          <label> Nom</label>
+                          <input type="text" class ="form-control mt-2 " id = "userFirstName"
+                              [(ngModel)] = "formatter.userFirstName" name = "userFirstName"
+                              required #Name="ngModel"
+                            [class.is-invalid]="Name.invalid && Name.touched">
+                            <small class="text-danger" [class.d-none]="Name.valid || Name.untouched">Ce champ est nécessaire</small>
+
+                      </div>
+
+                      <div class="form-group mt-2">
+                          <label> Prénom</label>
+                          <input type="text" class ="form-control mt-2" id = "userLastName"
+                              [(ngModel)] = "formatter.userLastName" name = "userLastName"
+                              required #lName="ngModel"
+                              [class.is-invalid]="lName.invalid && lName.touched">
+                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
+
+                      </div>
+
+                      <div class="form-group mt-2">
+                          <label> Email </label>
+                          <input type="email" class ="form-control mt-2" id = "email"
+                              [(ngModel)] = "formatter.email" name = "email"
+                              required #mail="ngModel"
+                            [class.is-invalid]="mail.invalid && mail.touched">
+                            <small class="text-danger" [class.d-none]="mail.valid || mail.untouched">Ce champ est nécessaire</small>
+
+                      </div>
+
+                      <button class = "btn btn-success" type ="submit">Submit</button>
+
+                  </form>
+                  </div>
+
+              <div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

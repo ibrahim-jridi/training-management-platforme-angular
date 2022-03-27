@@ -1,0 +1,66 @@
+
+  <!--  -->
+
+
+  <mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+          <!-- contenu du profil -->
+          <div class="container-fluid page">
+            <div class="d-flex page__box p-3 mt-2">Thème
+
+            </div>
+            </div>
+      <div class="page__content shadow p-3 position-relative">
+            <!-- créer thème -->
+
+          <div class="container">
+            <div class="myCard">
+              <div class="row">
+                <div >
+                  <div class="myLeftCtn">
+                    <form class="myForm " (ngSubmit) = "onSubmit()">
+                      <header>Créer un thème</header>
+                          <div class="row clearfix">
+                            <div class="col_half">
+                              <label style="margin-left: 25px;">Name</label>
+                              <div class="form-group">
+                                <i aria-hidden="true" class="fas fa fa-font"></i>
+                                <input type="text" class =" myInput" id = "name"
+                                [(ngModel)] = "theme.name" name = "name"
+                                required #name="ngModel"
+                                [class.is-invalid]="name.invalid && name.touched">
+                                <small class="text-danger" [class.d-none]="name.valid || name.untouched">Ce champ est nécessaire</small>
+                              </div>
+                            </div>
+
+                            <div class="col_half">
+                              <label style="margin-left: 25px;">Description</label>
+                              <div class="input_field">
+                                <i aria-hidden="true" class="fas fa fa-align-left"></i>
+                                <input type="text" class =" myInput" id = "description"
+                                [(ngModel)] = "theme.description" name = "description"
+                                required #description="ngModel"
+                                [class.is-invalid]="description.invalid && description.touched">
+                                <small class="text-danger" [class.d-none]="description.valid || description.untouched">Ce champ est nécessaire</small>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <input type="submit" class="butt" value="Enregistrer">
+                        </form>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+          </div>
+
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

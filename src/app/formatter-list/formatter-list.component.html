@@ -1,0 +1,57 @@
+
+<!--  -->
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+        <!-- contenu du profil -->
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+          <div class="page__content shadow p-3 position-relative">
+            <div class="page__content-data position-absolute text-center">
+              <div>
+                <button routerLink="create-formatter" routerLinkActive="active"  class="btn btn-primary mt-2" style="margin: 0 0 -40px 500px;">
+                  Ajouter formatteur
+                </button>
+              </div>
+              <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des formatteurs</h2>
+			  <ng2-smart-table [settings]="settings" [source]="formatters"></ng2-smart-table>
+              <!-- <table class = "table table-striped">
+			  
+                  <thead>
+                      <tr>
+                          <th > UserName</th>
+                          <th > FirstName</th>
+                          <th> LastName </th>
+                          <th> Email </th>
+                          <th> Actions </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor = "let formatter of formatters" >
+                          <td> {{ formatter.userName }} </td>
+                          <td> {{ formatter.userFirstName }} </td>
+                          <td> {{ formatter.userLastName }} </td>
+                          <td> {{ formatter.email }} </td>
+                          <td>
+                              <button (click) = "updateFormatter(formatter.id)" class = "btn btn-info"> Modifié</button>
+                              <button (click) = "deleteFormatter(formatter.id)" class = "btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+                              <button (click) = "formatterDetails(formatter.id)" class = "btn btn-info" style="margin-left: 10px"> Détails</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table> -->
+
+            <div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+

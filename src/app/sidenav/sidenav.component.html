@@ -1,0 +1,20 @@
+<mat-nav-list class="nav">
+  <div class="logo py-4">
+    <img src="./assets/CNI(1).png" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLink="formatter-list" routerLinkActive="active" class="nav-link" > <mat-icon>edit</mat-icon> Gérer formateurs</a>
+   <a mat-list-item routerLink="theme-list" routerLinkActive="active" class="nav-link" > <mat-icon>edit</mat-icon> Gérer themes</a>
+   <a mat-list-item routerLink="formation-list" routerLinkActive="active" class="nav-link" > <mat-icon>edit</mat-icon> Gérer formations</a>
+
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 5 </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
+</mat-nav-list>

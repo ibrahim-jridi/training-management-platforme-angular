@@ -1,0 +1,40 @@
+<div class="container mt-5 col-md-6">
+    <div class="card" style="padding: 20px;">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div>
+                <input type="text"
+                ngModel
+                name="userName"
+                id="userName"
+                placeholder="Enter your username"
+                class="form-control mb-2"
+                required #userName="ngModel"
+                [class.is-invalid]="userName.invalid && userName.touched"
+                >
+                <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
+            </div>
+            <div>
+                <input type="password"
+                ngModel
+                name="userPassword"
+                id="userPassword"
+                placeholder="Enter your password"
+                class="form-control mb-3"
+                required #userPassword="ngModel"
+                [class.is-invalid]="userPassword.invalid && userPassword.touched"
+                >
+                <small class="text-danger" [class.d-none]="userPassword.valid || userPassword.untouched">Ce champ est nécessaire</small>
+
+            </div>
+
+            <input type="submit"
+            value="Login"
+            class="btn btn-outline-primary form-control rounded-0"
+
+            >
+            <!-- <small  [routerLink]="['/request-reset-password']">mot de passe oublié ?</small> -->
+        </form>
+    </div>
+</div>
+
+

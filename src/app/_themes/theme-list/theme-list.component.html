@@ -1,0 +1,55 @@
+
+
+<!--  -->
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+        <!-- contenu du profil -->
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+          <div class="page__content shadow p-3 position-relative">
+            <div class="page__content-data position-absolute text-center">
+              <div>
+                <button routerLink="create-theme" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 -40px 350px; width: auto;">
+                  Ajouter théme
+                </button>
+              </div>
+              <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des Thémes</h2>
+              <table class = "table table-striped">
+                  <thead>
+                      <tr>
+                          <th>  Name</th>
+                          <th> Description </th>
+
+                          <th> Actions </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor = "let theme of themes" >
+                          <td> {{ theme.name }} </td>
+                          <td> {{ theme.description }} </td>
+
+                          <td>
+                              <button (click) = "updateTheme(theme.id)" class = "btn btn-info"> Modifier</button>
+                              <button (click) = "deleteTheme(theme.id)" class = "btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+                              <button (click) = "themeDetails(theme.id)" class = "btn btn-info" style="margin-left: 10px"> Détails</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+
+            <div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

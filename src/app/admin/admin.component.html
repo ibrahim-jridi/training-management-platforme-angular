@@ -1,0 +1,93 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+        <!-- contenu du profil -->
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+          <div class="page__content shadow p-3 position-relative">
+            <div class="page__content-data position-absolute text-center">
+                  <!-- formatteur -->
+              <div>
+                <button routerLink="formatter-list" routerLinkActive="active" class="btn btn-primary " >
+                   liste des formatteurs
+                  </button>
+                  <div>
+                    <button routerLink="create-formatter" routerLinkActive="active"  class="btn btn-primary mt-2" >
+                      Ajouter formatteur
+                    </button>
+                  </div>
+
+              </div>
+                  <!-- thémes -->
+              <div>
+                <button routerLink="theme-list" routerLinkActive="active" class="btn btn-primary  mt-2" >
+                    liste des thémes
+                  </button>
+                  <div>
+                    <button routerLink="create-theme" routerLinkActive="active"  class="btn btn-primary mt-2" >
+                      Ajouter théme
+                    </button>
+                  </div>
+
+              </div>
+                  <!-- formations -->
+              <div>
+                <button routerLink="formation-list" routerLinkActive="active" class="btn btn-primary  mt-2" >
+                    liste des formations
+                  </button>
+                  <div>
+                    <button routerLink="create-formation" routerLinkActive="active"  class="btn btn-primary mt-2" >
+                      Ajouter formation
+                    </button>
+                  </div>
+
+              </div>
+            <div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+
+<!-- <mat-toolbar>
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="row mr-2 ml-auto">
+      <ul class="row m-0 align-items-center">
+        <li>
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+            class="user mt-2 d-flex align-items-center"
+          >
+            <img src="./assets/user.jpg" alt="" class="user-image mr-1 p-2" />
+
+            User Name
+            <mat-icon class="user-image-icon ml-1"
+              >keyboard_arrow_down</mat-icon
+            >
+          </button>
+          <mat-menu #menu="matMenu">
+            <button  *ngIf="isLoggedIn()"  mat-menu-item (click)="logout()" >
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
