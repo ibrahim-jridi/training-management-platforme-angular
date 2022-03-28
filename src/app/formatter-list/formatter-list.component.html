@@ -9,18 +9,28 @@
     <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
         <!-- contenu du profil -->
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-          <div class="page__content shadow p-3 position-relative">
-            <div class="page__content-data position-absolute text-center">
-              <div>
-                <button routerLink="create-formatter" routerLinkActive="active"  class="btn btn-primary mt-2" style="margin: 0 0 -40px 500px;">
-                  Ajouter formatteur
-                </button>
+
+
+              <div class="d-flex page__box p-3 mt-2">Formateur
+                <div class="example-button-row">
+
+                </div>
+              </div>
               </div>
               <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des formatteurs</h2>
-			  <ng2-smart-table [settings]="settings" [source]="formatters"></ng2-smart-table>
+              <div class="page__content shadow p-3 position-relative">
+			  <button mat-raised-button  routerLink="create-formatter" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 0px 950px; width: auto; padding-top:10px;"><mat-icon>add</mat-icon>
+                  </button>
+                <ng2-smart-table
+                [settings]="settings"
+                [source]="formatters"
+                (custom)="updateFormatter(id)"
+                (custom)="deleteFormatter(id)"
+                ></ng2-smart-table>
+              </div>
+
               <!-- <table class = "table table-striped">
-			  
+
                   <thead>
                       <tr>
                           <th > UserName</th>
@@ -49,9 +59,9 @@
 
           </div>
 
-        </div>
-      </div>
-    </div>
+
+
+
   </mat-drawer-content>
 </mat-drawer-container>
 

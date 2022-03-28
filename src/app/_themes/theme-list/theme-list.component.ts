@@ -12,6 +12,24 @@ export class ThemeListComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   sideBarOpen = true;
   themes: Theme[];
+    // ? smart-table configuration
+  settings = {
+    
+  columns: {
+    name: {
+      title: 'Titre'
+    },
+    description: {
+      title: 'Description'
+    },
+    
+	
+  },
+  actions: {
+	  add:false
+  }
+  
+};
 
   constructor(private themeService: ThemeService,
     private router: Router) { }

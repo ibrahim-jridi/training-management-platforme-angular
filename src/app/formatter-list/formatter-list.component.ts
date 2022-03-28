@@ -15,7 +15,10 @@ export class FormatterListComponent implements OnInit {
   sideBarOpen = true;
 
   formatters: Formatter[];
+  id:number;
+  // ? smart-table configuration
   settings = {
+
   columns: {
     userName: {
       title: 'Pseudo'
@@ -31,8 +34,20 @@ export class FormatterListComponent implements OnInit {
     },
 	phone: {
       title: 'Téléphone'
-    }
+    },
+
+  },
+  actions: {
+	  add:false,
+    edit: false,
+    delete: false,
+    custom: [
+      { name: 'updateFormatter', title: '<i class ="fa-solid fa-pen"></i>' },
+      {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can" ></i>'}
+    ],
+    position: 'right'
   }
+
 };
 
   constructor(private formatterService: FormatterService,
