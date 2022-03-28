@@ -57,16 +57,7 @@ mat-table {
   flex: 5 5 auto;
 }
 
-// :host
-//   ::ng-deep
-//   .ng2-st-tbody-custom
-//   a.ng2-smart-action.ng2-smart-action-custom-custom {
-//   display: inline-flex;
 
-//   width: 80px;
-//   text-align: center;
-//   padding-top: 10px;
-// }
 :host ::ng-deep ng2-st-tbody-edit-delete {
   display: flex !important;
   height: 0 !important;

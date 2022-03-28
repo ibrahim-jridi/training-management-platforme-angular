@@ -24,8 +24,8 @@
                 <ng2-smart-table
                 [settings]="settings"
                 [source]="formatters"
-                (custom)="updateFormatter(id)"
-                (custom)="deleteFormatter(id)"
+                (custom)="updateFormatter($event)"
+                (custom)="deleteFormatter($event)"
                 ></ng2-smart-table>
               </div>
 

@@ -1,4 +1,4 @@
-<div class="container mt-5 col-md-6">
+<!-- <div class="container mt-5 col-md-6">
     <div class="card" style="padding: 20px;">
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div>
@@ -32,9 +32,59 @@
             class="btn btn-outline-primary form-control rounded-0"
 
             >
-            <!-- <small  [routerLink]="['/request-reset-password']">mot de passe oublié ?</small> -->
+             <small  [routerLink]="['/request-reset-password']">mot de passe oublié ?</small>
         </form>
     </div>
-</div>
+</div> -->
+<!--  -->
+<div class="container-fluid">
+  <div class="row main-content bg-success text-center">
+    <div class="col-md-4 text-center company__info">
+      <!-- <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span> -->
+      <h4 class="company_title"><img src="./assets/CNI(1).png" alt="Centre National d'Informatique" class="img"></h4>
+    </div>
+    <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+          <h1>Connexion</h1>
+        </div>
+        <div class="row">
+          <form control="" class="form-group" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div class="row">
+              <input type="text" ngModel
+              name="userName"
+              id="userName"
+              placeholder="Enter your username"
+              class="form__input"
+              required #userName="ngModel"
+              [class.is-invalid]="userName.invalid && userName.touched"
+              >
+              <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
+            </div>
+            <div class="row">
+              <!-- <span class="fa fa-lock"></span> -->
+              <input type="password" ngModel
+              name="userPassword"
+              id="userPassword"
+              placeholder="Enter your password"
+              class="form__input"
+              required #userPassword="ngModel"
+              [class.is-invalid]="userPassword.invalid && userPassword.touched"
+              >
+              <small class="text-danger" [class.d-none]="userPassword.valid || userPassword.untouched">Ce champ est nécessaire</small>
+            </div>
+            <!-- <div class="row">
+              <input type="checkbox" name="remember_me" id="remember_me" class="">
+               <label for="remember_me">Remember Me!</label>
+            </div> -->
+            <div class="row">
+              <input type="submit" value="Connexion" class="btn">
+            </div>
+          </form>
+        </div>
 
+      </div>
+    </div>
+  </div>
+</div>
 

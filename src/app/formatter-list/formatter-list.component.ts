@@ -15,7 +15,7 @@ export class FormatterListComponent implements OnInit {
   sideBarOpen = true;
 
   formatters: Formatter[];
-  id:number;
+
   // ? smart-table configuration
   settings = {
 
@@ -82,7 +82,9 @@ export class FormatterListComponent implements OnInit {
   }
 
   updateFormatter(id: number){
-    this.router.navigate(['admin/update-formatter', id]);
+
+	  this.router.navigate(['admin/update-formatter', id]);
+
   }
 
   deleteFormatter(id: number){

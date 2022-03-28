@@ -14,7 +14,7 @@ export class ThemeListComponent implements OnInit {
   themes: Theme[];
     // ? smart-table configuration
   settings = {
-    
+
   columns: {
     name: {
       title: 'Titre'
@@ -22,13 +22,20 @@ export class ThemeListComponent implements OnInit {
     description: {
       title: 'Description'
     },
-    
-	
+
+
   },
   actions: {
-	  add:false
+	  add:false,
+    edit: false,
+    delete: false,
+    custom: [
+      { name: 'updateTheme', title: '<i class ="fa-solid fa-pen"></i>' },
+      {name:'deleteTheme',title:'<i class="fa-solid fa-trash-can" ></i>'}
+    ],
+    position: 'right'
   }
-  
+
 };
 
   constructor(private themeService: ThemeService,
