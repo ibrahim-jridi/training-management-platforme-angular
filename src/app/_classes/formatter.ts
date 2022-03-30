@@ -6,4 +6,6 @@ export class Formatter {
     email: string;
     userPassword:string;
 	phone:string;
+  specialite:string;
+  adresse:string;
 }

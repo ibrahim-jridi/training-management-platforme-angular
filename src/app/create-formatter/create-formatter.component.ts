@@ -26,7 +26,7 @@ export class CreateFormatterComponent implements OnInit {
     toggleSidebar() {
       this.toggleSidebarForMe.emit();
     }
-
+    //  * save in userDao
     saveFormatter(){
       this.formatterService.createFormatter(this.formatter).subscribe( data =>{
         console.log(data);
@@ -34,6 +34,7 @@ export class CreateFormatterComponent implements OnInit {
       },
       error => console.log(error));
     }
+    //  * save in formatterDao
     saveFormatterr(){
       this.formatterService.createFormatterr(this.formatter).subscribe( data =>{
         console.log(data);

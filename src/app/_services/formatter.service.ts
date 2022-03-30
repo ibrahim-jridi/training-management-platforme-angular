@@ -16,11 +16,12 @@ export class FormatterService {
   getFormatterList(): Observable<Formatter[]>{
     return this.httpClient.get<Formatter[]>(`${environment.FAPI}`);
   }
-  
 
+  // * to save in userDao
   createFormatter(formatters: Formatter): Observable<Object>{
     return this.httpClient.post(`${environment.FAPI}`, formatters);
   }
+  // * to save in formatterDao
   createFormatterr(formatters: Formatter): Observable<Object>{
     return this.httpClient.post(`${environment.FAPII}`, formatters);
   }

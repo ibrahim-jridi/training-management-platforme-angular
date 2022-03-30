@@ -22,6 +22,9 @@ export class UserService {
       headers: this.requestHeader,
     });
   }
+  getUserById(id: string): Observable<any>{
+    return this.httpclient.get<any>(`${environment.API}/${id}`);
+  }
 
   public forUser() {
     return this.httpclient.get(`${environment.API}/forUser`, {
