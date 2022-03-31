@@ -43,7 +43,8 @@ export class FormatterListComponent implements OnInit {
     delete: false,
     custom: [
       { name: 'updateFormatter', title: '<i class ="fa-solid fa-pen"></i>' },
-      {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can" ></i>'}
+      {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can" ></i>'},
+      {name:'formatterDetails',title:'<i class="fa-solid fa-eye" ></i>'},
     ],
     position: 'right'
   }
@@ -77,22 +78,32 @@ export class FormatterListComponent implements OnInit {
   }
 
 
- formatterDetails(id:number){
-    this.router.navigate(['admin/formatter-details', id]);
+ formatterDetails(id : number){
+   for (const formatter of this.formatters) {
+    this.router.navigate(['admin/formatter-details', formatter.id]);
+
+   }
   }
 
-  updateFormatter(id: number){
+  updateFormatter(id : number){
+    for (const formatter of this.formatters) {
+      this.router.navigate(['admin/update-formatter',  formatter.id]);
 
-	  this.router.navigate(['admin/update-formatter', id]);
+    }
+
 
   }
 
   deleteFormatter(id: number){
-    this.formatterService.deleteFormatter(id).subscribe( data => {
+	  for (const formatter of this.formatters) {
+      this.formatterService.deleteFormatter(formatter.id).subscribe( data => {
       console.log(data);
       this.getFormatter();
 
     })
+
+    }
+    
   }
 
 }

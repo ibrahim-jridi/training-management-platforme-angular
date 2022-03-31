@@ -13,6 +13,40 @@ export class FormationListComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   sideBarOpen = true;
   formations: Formation[];
+   // ? smart-table configuration
+   settings = {
+
+    columns: {
+      name: {
+        title: 'Nom'
+      },
+      description: {
+        title: 'Description'
+      },
+      theme: {
+        title: 'Thème'
+      },
+      lien: {
+        title: 'Lien'
+      },
+      date_final: {
+        title: 'Date_final'
+      },
+
+    },
+    actions: {
+      add:false,
+      edit: false,
+      delete: false,
+      custom: [
+        { name: 'updateFormation', title: '<i class ="fa-solid fa-pen"></i>' },
+        {name:'deleteFormation',title:'<i class="fa-solid fa-trash-can" ></i>'},
+        {name:'formationDetails',title:'<i class="fa-solid fa-eye" ></i>'},
+      ],
+      position: 'right'
+    }
+
+  };
 
   constructor(private formationService: FormationService,
     private router: Router) { }

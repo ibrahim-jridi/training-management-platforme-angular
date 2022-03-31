@@ -58,18 +58,27 @@ export class ThemeListComponent implements OnInit {
   }
 
   themeDetails(id: number){
-    this.router.navigate(['admin/theme-details', id]);
+    for (const theme of this.themes) {
+      this.router.navigate(['admin/theme-details', theme.id]);
+    }
+
   }
 
   updateTheme(id: number){
-    this.router.navigate(['admin/update-theme', id]);
+    for (const theme of this.themes) {
+      this.router.navigate(['admin/update-theme', theme.id]);
+    }
+
   }
 
   deleteTheme(id: number){
-    this.themeService.deleteTheme(id).subscribe( data => {
-      console.log(data);
-      this.getThemes();
-    })
+    for (const theme of this.themes) {
+      this.themeService.deleteTheme(id).subscribe( data => {
+        console.log(data);
+        this.getThemes();
+      })
+     }
+
   }
 
 }

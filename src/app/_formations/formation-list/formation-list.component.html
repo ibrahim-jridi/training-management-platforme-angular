@@ -1,5 +1,4 @@
 
-
 <!--  -->
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
@@ -10,46 +9,59 @@
     <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
         <!-- contenu du profil -->
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-          <div class="page__content shadow p-3 position-relative">
-            <div class="page__content-data position-absolute text-center">
-              <div>
-                <button routerLink="create-formation" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 -40px 350px; width: auto;">
-                  Ajouter formation
-                </button>
+
+
+              <div class="d-flex page__box p-3 mt-2">Formation
+                <div class="example-button-row">
+
+                </div>
               </div>
-              <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des Thémes</h2>
-              <table class = "table table-striped">
+              </div>
+              <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des formations</h2>
+              <div class="page__content shadow p-3 position-relative">
+			  <button mat-raised-button  routerLink="create-formation" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 0px 950px; width: auto; padding-top:10px;"><mat-icon>add</mat-icon>
+                  </button>
+                 <ng2-smart-table
+                [settings]="settings"
+                [source]="formations"
+                (custom)="updateFormation($event)"
+                (custom)="deleteFormation($event)"
+                ></ng2-smart-table>
+              </div>
+
+              <!-- <table class = "table table-striped">
+
                   <thead>
                       <tr>
-                          <th>  Nom</th>
-                          <th> Description </th>
-                          <th> Théme </th>
+                          <th > UserName</th>
+                          <th > FirstName</th>
+                          <th> LastName </th>
+                          <th> Email </th>
                           <th> Actions </th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor = "let formation of formations" >
-                          <td> {{ theme.name }} </td>
-                          <td> {{ theme.description }} </td>
-
+                      <tr *ngFor = "let formatter of formatters" >
+                          <td> {{ formatter.userName }} </td>
+                          <td> {{ formatter.userFirstName }} </td>
+                          <td> {{ formatter.userLastName }} </td>
+                          <td> {{ formatter.email }} </td>
                           <td>
-                              <button (click) = "updateFormation(formation.id)" class = "btn btn-info"> Modifier</button>
-                              <button (click) = "deleteFormation(formation.id)" class = "btn btn-danger" style="margin-left: 10px"> Supprimer</button>
-                              <button (click) = "formationDetails(formation.id)" class = "btn btn-info" style="margin-left: 10px"> Détails</button>
+                              <button (click) = "updateFormatter(formatter.id)" class = "btn btn-info"> Modifié</button>
+                              <button (click) = "deleteFormatter(formatter.id)" class = "btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+                              <button (click) = "formatterDetails(formatter.id)" class = "btn btn-info" style="margin-left: 10px"> Détails</button>
                           </td>
                       </tr>
                   </tbody>
-              </table>
+              </table> -->
 
             <div>
 
           </div>
 
-        </div>
-      </div>
-    </div>
+
+
+
   </mat-drawer-content>
 </mat-drawer-container>
-
 

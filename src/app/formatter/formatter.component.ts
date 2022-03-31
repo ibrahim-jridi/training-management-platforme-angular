@@ -22,7 +22,7 @@ export class FormatterComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.forFormatter();
+    // this.forFormatter();
     this.id = this.route.snapshot.params['id'];
 
     this.formatterService.getFormatterById(this.id).subscribe(data => {
@@ -40,20 +40,20 @@ export class FormatterComponent implements OnInit {
   }
   onSubmit(){
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
-      
+
     }
     , error => console.log(error));
   }
-  forFormatter() {
-    this.userService.forFormatter().subscribe(
-      (response) => {
-        console.log(response);
-        this.message = response;
-      },
-      (error)=>{
-        console.log(error);
-      }
-    );
-  }
+  // forFormatter() {
+  //   this.userService.forFormatter().subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.message = response;
+  //     },
+  //     (error)=>{
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
 }

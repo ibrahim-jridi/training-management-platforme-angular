@@ -9,12 +9,110 @@
       <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
           <!-- contenu du profil -->
       <div class="container-fluid page">
-        <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+        <div class="d-flex page__box p-3 mt-2">Formatter</div>
             <div class="page__content shadow p-3 position-relative">
-              <div class="page__content-data position-absolute text-center">
-                <div class="col-md-6 offset-md-3">
+              <!-- <div class="page__content-data position-absolute text-center">
+                <div class="col-md-6 offset-md-3"> -->
                   <h3 style="color: rgb(62, 111, 202);margin-left: -500px; font-weight: 600;font-size: 2rem;"> Modifié Formatteur </h3>
-                  <form (ngSubmit) = "onSubmit()">
+
+                  <div class="tab-pane" id="edit">
+                    <form (ngSubmit) = "onSubmit()">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{formatter.userName}} id = "userName"
+                                [(ngModel)] = "formatter.userName" name = "userName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{formatter.userFirstName}} id = "userFirstName"
+                                [(ngModel)] = "formatter.userFirstName" name = "userFirstName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{formatter.userLastName}} id = "userLastName"
+                                [(ngModel)] = "formatter.userLastName" name = "userLastName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" value={{formatter.email}} id = "email"
+                                [(ngModel)] = "formatter.email" name = "email">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="file">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Adresse</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="{{formatter.adresse}}" id = "adresse"
+                                [(ngModel)] = "formatter.adresse" name = "adresse" >
+                            </div>
+                        </div> -->
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{formatter.adresse}} id = "adresse"
+                                [(ngModel)] = "formatter.adresse" name = "adresse">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" value="" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="" placeholder="State">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="{{formatter.userPassword}}" value={{formatter.userPassword}} id = "userPassword"
+                                [(ngModel)] = "formatter.userPassword" name = "userPassword">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value={{formatter.userPassword}}  id = "userPassword"
+                                [(ngModel)] = "formatter.userPassword" name = "userPassword">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Annuler">
+                                <input type="submit" class="btn btn-primary" value="Enregistrer">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+              <div>
+
+            <!-- </div>
+
+          </div> -->
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  <!--  -->
+
+ <!-- <form (ngSubmit) = "onSubmit()">
 
                     <div class="form-group">
                           <label> Pseudo</label>
@@ -57,15 +155,4 @@
 
                       <button class = "btn btn-success" type ="submit">Enregistrer</button>
 
-                  </form>
-                  </div>
-
-              <div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+                  </form> -->

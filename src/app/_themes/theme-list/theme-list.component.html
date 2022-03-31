@@ -12,7 +12,7 @@
 
               <div class="d-flex page__box p-3 mt-2">Théme
                 <div class="example-button-row">
-                  
+
                 </div>
               </div>
               </div>
@@ -20,7 +20,13 @@
               <div class="page__content shadow p-3 position-relative">
 			  <button mat-raised-button  routerLink="create-theme" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 0px 950px; width: auto; padding-top:10px;"><mat-icon>add</mat-icon>
                   </button>
-                <ng2-smart-table [settings]="settings" [source]="themes"></ng2-smart-table>
+                <ng2-smart-table
+                 [settings]="settings"
+                 [source]="themes"
+                 (custom)="updateTheme($id)"
+                (custom)="deleteTheme($id)"
+				        (custom)="themeDetails($id)"
+                ></ng2-smart-table>
               </div>
 
               <!-- <table class = "table table-striped">

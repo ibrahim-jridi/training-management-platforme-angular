@@ -21,11 +21,12 @@
               <div class="page__content shadow p-3 position-relative">
 			  <button mat-raised-button  routerLink="create-formatter" routerLinkActive="active"  class="btn btn-primary mt-2"  style="margin: 0 0 0px 950px; width: auto; padding-top:10px;"><mat-icon>add</mat-icon>
                   </button>
-                <ng2-smart-table
+                 <ng2-smart-table
                 [settings]="settings"
                 [source]="formatters"
-                (custom)="updateFormatter($event)"
-                (custom)="deleteFormatter($event)"
+                (custom)="updateFormatter($id)"
+                (custom)="deleteFormatter($id)"
+				        (custom)="formatterDetails($id)"
                 ></ng2-smart-table>
               </div>
 
