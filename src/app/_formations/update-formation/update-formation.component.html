@@ -1,77 +1,112 @@
 
 
-  <!--  -->
-  <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <!-- <mat-drawer mode="side" opened="true"> -->
-      <app-sidenav></app-sidenav>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
-          <!-- contenu du profil -->
-      <div class="container-fluid page">
-        <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-            <div class="page__content shadow p-3 position-relative">
-              <div class="page__content-data position-absolute text-center">
-                <div class="col-md-6 offset-md-3">
-                  <h3 style="color: rgb(62, 111, 202);margin-left: -500px; font-weight: 600;font-size: 2rem;"> Modifié les thémes </h3>
-                  <form (ngSubmit) = "onSubmit()">
+<!--  -->
 
-                      <div class="form-group">
-                          <label> Nom</label>
-                          <input type="text" class ="form-control mt-2" id = "name"
-                              [(ngModel)] = "formation.name" name = "name" required #Name="ngModel"
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <!-- <mat-drawer mode="side" opened="true"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+        <!-- contenu du profil -->
+        <div class="container-fluid page">
+          <div class="d-flex page__box p-3 mt-2">Formation
+
+          </div>
+          </div>
+    <div class="page__content shadow p-3 position-relative">
+          <!-- créer formateur -->
+
+        <div class="container">
+          <div class="myCard">
+            <div class="row">
+              <div >
+                <div class="myLeftCtn">
+                  <form class="myForm " (ngSubmit) = "onSubmit()">
+                    <header>Modifié Formation</header>
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Nom</label>
+                            <div class="form-group">
+                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
+                              <input type="text" class =" myInput" id = "name"
+                              [(ngModel)] = "formation.name" name = "name"
+                              required #userName="ngModel"
+                              [class.is-invalid]="userName.invalid && userName.touched">
+                              <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
+                            </div>
+                          </div>
+
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Déscription</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
+                              <input type="text" class =" myInput" id = "description"
+                              [(ngModel)] = "formation.description" name = "description"
+                              required #Name="ngModel"
                               [class.is-invalid]="Name.invalid && Name.touched">
                               <small class="text-danger" [class.d-none]="Name.valid || Name.untouched">Ce champ est nécessaire</small>
-                      </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Lien</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-user"></i>
+                              <input type="text" class =" myInput" id = "lien"
+                              [(ngModel)] = "formation.lien" name = "lien"
+                              required #lName="ngModel"
+                              [class.is-invalid]="lName.invalid && lName.touched">
+                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
+                            </div>
+                          </div>
 
-                      <div class="form-group mt-2">
-                          <label> Description</label>
-                          <input type="text" class ="form-control mt-2" id = "description"
-                              [(ngModel)] = "formation.description" name = "description" required #Desc="ngModel"
-                              [class.is-invalid]="Desc.invalid && Desc.touched">
-                              <small class="text-danger" [class.d-none]="Desc.valid || Desc.untouched">Ce champ est nécessaire</small>
-                      </div>
-                      <div class="form-group mt-2">
-                          <label> Theme</label>
+
+
+                          <div class="col_half">
+                            <label> Theme</label>
                           <input type="text" class ="form-control mt-2" id = "theme"
                               [(ngModel)] = "formation.theme" name = "theme" required #theme="ngModel"
                               [class.is-invalid]="theme.invalid && theme.touched">
                               <small class="text-danger" [class.d-none]="theme.valid || theme.untouched">Ce champ est nécessaire</small>
-                      </div>
-                      <div class="form-group mt-2">
-                          <label> Lien</label>
-                          <input type="text" class ="form-control mt-2" id = "lien"
-                              [(ngModel)] = "formation.lien" name = "lien" required #lien="ngModel"
-                              [class.is-invalid]="lien.invalid && lien.touched">
-                              <small class="text-danger" [class.d-none]="lien.valid || lien.untouched">Ce champ est nécessaire</small>
-                      </div>
-                      <div class="form-group mt-2" style="margin-left: -70px;">
-                        <mat-form-field appearance="fill">
-                          <mat-label>Date finale</mat-label>
-                          <input matInput [matDatepicker]="date_final" class ="form-control"
-                          id = "date_final"
-                           name = "date_final" [(ngModel)] = "formation.date_final" required
-                          >
-                          <mat-datepicker-toggle matSuffix [for]="date_final"></mat-datepicker-toggle>
-                          <mat-datepicker #date_final></mat-datepicker>
-                        </mat-form-field>
-                      </div>
+                          </div>
+                        </div>
+
+                        <div class="row clearfix">
+
+                          <mat-form-field appearance="fill">
+                            <mat-label>Date finale</mat-label>
+                            <input matInput [matDatepicker]="date_final" class ="form-control"
+                            id = "date_final"
+                             name = "date_final" [(ngModel)] = "formation.date_final" required
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="date_final"></mat-datepicker-toggle>
+                            <mat-datepicker #date_final></mat-datepicker>
+                          </mat-form-field>
 
 
+                        </div>
 
-                      <button class = "btn btn-success mt-2" type ="submit">Submit</button>
-
-                  </form>
-                  </div>
-
-              <div>
-
+                        <input type="submit" class="butt" value="Enregistrer">
+                      </form>
+                </div>
+              </div>
             </div>
 
-          </div>
-        </div>
       </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+        </div>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+
+
+
+
+
 

@@ -16,7 +16,9 @@ export class AdHeaderComponent implements OnInit {
     private router: Router,
     public userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+	  
+  }
 
   public isLoggedIn() {
     return this.userAuthService.isLoggedIn();

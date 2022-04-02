@@ -12,7 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormatterComponent implements OnInit {
   message;
-  id: number;
+
+  id:number;
+    userFirstName : string;
+    userLastName : string;
+    userName : string;
+    email : string;
+    address : string;
+    phone : string;
   formatter: Formatter = new Formatter();
   constructor(private userService: UserService,
     private userAuthService: UserAuthService,
@@ -25,10 +32,24 @@ export class FormatterComponent implements OnInit {
     // this.forFormatter();
     this.id = this.route.snapshot.params['id'];
 
-    this.formatterService.getFormatterById(this.id).subscribe(data => {
-      this.formatter = data;
-    }, error => console.log(error));
+
+    // this.formatterService.getFormatterById(this.id).subscribe(data => {
+    //   this.formatter = data;
+    // }, error => console.log(error));
+    this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
+      this.formatter = formatter
+
+      this.userFirstName = formatter.userFirstName;
+      this.userLastName = formatter.userLastName;
+      this.userName = formatter.userName;
+      this.email = formatter.email;
+      this.address = formatter.adresse;
+      this.phone = formatter.phone;
+  }, (error : ErrorEvent) => {
+      console.log(error)
+  })
   }
+
 
   public isLoggedIn() {
     return this.userAuthService.isLoggedIn();

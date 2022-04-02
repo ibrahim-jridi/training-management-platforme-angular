@@ -3,9 +3,9 @@ export class Formation {
   id:number;
   name:string;
   description:string;
-  theme:Theme;
-  lien:URL;
-  date_creation:Date;
+  theme:Theme[];
+  lien:String;
+  date_creation:String;
   date_final:Date;
 
 }
