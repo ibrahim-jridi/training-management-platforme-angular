@@ -23,9 +23,7 @@
                 <ng2-smart-table
                  [settings]="settings"
                  [source]="themes"
-                 (custom)="updateTheme($event)"
-                (custom)="deleteTheme($event)"
-				        (custom)="themeDetails($event)"
+                 (custom)="onCustomAction($event)"
                 ></ng2-smart-table>
               </div>
 

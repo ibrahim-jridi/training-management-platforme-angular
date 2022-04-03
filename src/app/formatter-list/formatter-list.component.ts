@@ -15,7 +15,7 @@ export class FormatterListComponent implements OnInit {
   sideBarOpen = true;
 
   formatters: Formatter[];
-	
+
   // ? smart-table configuration
   settings = {
 
@@ -44,7 +44,7 @@ export class FormatterListComponent implements OnInit {
     custom: [
       { name: 'updateFormatter', title: '<i class ="fa-solid fa-pen"></i>' },
       {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can" ></i>'}
-      
+
     ],
     position: 'right'
   }
@@ -77,15 +77,25 @@ export class FormatterListComponent implements OnInit {
     );
   }
 
+  onCustomAction(event) {
+      switch ( event.action) {
+        case 'updateFormatter':
+          this.updateFormatter(event.data);
+          break;
+       case 'deleteFormatter':
+          this.deleteFormatter(event.data);
+      }
+    }
 
- formatterDetails(id : number){
+
+ formatterDetails(event){
    for (const formatter of this.formatters) {
-    this.router.navigate(['admin/formatter-details', formatter.id]);
+    this.router.navigate(['admin/formatter-details', event.formatter.id]);
 
    }
   }
 
-  updateFormatter(id : number){
+  updateFormatter(event){
     for (const formatter of this.formatters) {
       this.router.navigate(['admin/update-formatter',  formatter.id]);
 
@@ -94,8 +104,8 @@ export class FormatterListComponent implements OnInit {
 
   }
 
-  deleteFormatter(id: number){
-	  
+  deleteFormatter(event){
+
 	  for (const formatter of this.formatters) {
       this.formatterService.deleteFormatter(formatter.id).subscribe( data => {
       console.log(data);
@@ -104,7 +114,7 @@ export class FormatterListComponent implements OnInit {
     })
 
     }
-    
+
   }
 
 }
