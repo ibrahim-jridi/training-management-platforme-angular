@@ -1,3 +1,5 @@
+import { FormatterService } from './../../_services/formatter.service';
+import { Formatter } from './../../_classes/formatter';
 import { ThemeService } from './../../_services/theme.service';
 import { Theme } from './../../_classes/theme';
 import { FormationService } from './../../_services/formation.service';
@@ -15,17 +17,22 @@ export class CreateFormationComponent implements OnInit {
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  
+
   sideBarOpen = true;
   formation: Formation = new Formation();
   Themes = new FormControl();
   themes:Theme[]
+  Formatters = new FormControl();
+  formatters:Formatter[];
+
   constructor(private formationService: FormationService, private themeService:ThemeService,
-    private router: Router) { }
+    private formatterService:FormatterService, private router: Router) { }
+
+
 
   ngOnInit(): void {
+    this.getThemes();
+    this.getFormatter();
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
@@ -53,6 +60,11 @@ export class CreateFormationComponent implements OnInit {
    getThemes(){
     this.themeService.getThemesList().subscribe(data => {
       this.themes = data;
+    });
+  }
+   getFormatter(){
+    this.formatterService.getFormatterList().subscribe(data => {
+      this.formatters = data;
     });
   }
 

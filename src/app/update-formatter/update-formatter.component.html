@@ -18,48 +18,48 @@
                   <div class="tab-pane" id="edit">
                     <form (ngSubmit) = "onSubmit()">
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
+                            <label class="col-lg-3 col-form-label form-control-label" style="color:black;">Pseudo</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userName}} id = "userName"
                                 [(ngModel)] = "formatter.userName" name = "userName">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Nom</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userFirstName}} id = "userFirstName"
                                 [(ngModel)] = "formatter.userFirstName" name = "userFirstName">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Prénom</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userLastName}} id = "userLastName"
                                 [(ngModel)] = "formatter.userLastName" name = "userLastName">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Email</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="email" value={{formatter.email}} id = "email"
                                 [(ngModel)] = "formatter.email" name = "email">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">image de profil</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="file">
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Address</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.adresse}} id = "adresse"
                                 [(ngModel)] = "formatter.adresse" name = "adresse">
                             </div>
                         </div>
-                        <div class="form-group row">
+                       <!--  <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-6">
                                 <input class="form-control" type="text" value="" placeholder="City">
@@ -67,18 +67,18 @@
                             <div class="col-lg-3">
                                 <input class="form-control" type="text" value="" placeholder="State">
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Mot de passe</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" value="{{formatter.userPassword}}" value={{formatter.userPassword}} id = "userPassword"
                                 [(ngModel)] = "formatter.userPassword" name = "userPassword">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
+                            <label class="col-lg-3 col-form-label form-control-label"style="color:black;">Confirmé mot de passe</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" value={{formatter.userPassword}}  id = "userPassword"
                                 [(ngModel)] = "formatter.userPassword" name = "userPassword">
@@ -88,7 +88,7 @@
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                                 <input type="reset" class="btn btn-secondary" value="Annuler">
-                                <input type="submit" class="btn btn-primary" value="Enregistrer">
+                                <input type="submit" class="btn btn-primary ml-2" value="Enregistrer">
                             </div>
                         </div>
                     </form>

@@ -56,6 +56,12 @@ mat-table {
 .example-spacer {
   flex: 5 5 auto;
 }
+.btn {
+  //margin: 0 0 0px 950px;
+  margin-left:15px;
+  width: auto;
+  padding-top:10px;
+  }
 
 
 :host ::ng-deep ng2-st-tbody-edit-delete {

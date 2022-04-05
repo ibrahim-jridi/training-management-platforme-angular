@@ -25,6 +25,7 @@ mat-drawer {
   font-size: 36px;
 }
 .page__content {
+  width:100%;
   min-height: calc(100vh - 178px);
   border-radius: 10px;
   margin-top: -2rem;
@@ -56,20 +57,32 @@ mat-table {
 .example-spacer {
   flex: 5 5 auto;
 }
+.btn {
+//margin: 0 0 0px 950px;
+margin-left:15px;
+width: auto;
+padding-top:10px;
+}
+
+
 
 
 :host ::ng-deep ng2-st-tbody-edit-delete {
   display: flex !important;
   height: 0 !important;
 }
+.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+    color: #1e6bb8;
+}
 
 :host
   ::ng-deep
   ng2-st-tbody-custom
   a.ng2-smart-action.ng2-smart-action-custom-custom {
-  display: inline-block;
-  width: 20px;
+  display: inline-flex;
+  justify-content:space-between;
+  width: 10px;
   text-align: center;
   font-size: 1.1em;
-  
+
 }

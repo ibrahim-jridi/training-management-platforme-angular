@@ -31,7 +31,8 @@ export class ThemeListComponent implements OnInit {
     delete: false,
     custom: [
       { name: 'updateTheme', title: '<i class ="fa-solid fa-pen"></i>' },
-      {name:'deleteTheme',title:'<i class="fa-solid fa-trash-can" ></i>'}
+      {name:'deleteTheme',title:'<i class="fa-solid fa-trash-can" ></i>'},
+      {name:'themeDetails',title:'<i class="fa-solid fa-eye" ></i>'}
     ],
     position: 'right'
   }
@@ -62,8 +63,11 @@ export class ThemeListComponent implements OnInit {
       case 'updateTheme':
         this.updateTheme(event.data);
         break;
-     case 'deleteTheme':
+      case 'deleteTheme':
         this.deleteTheme(event.data);
+        break;
+      case 'themeDetails':
+        this.themeDetails(event.data);
     }
   }
 

@@ -21,19 +21,24 @@ export class FormatterListComponent implements OnInit {
 
   columns: {
     userName: {
-      title: 'Pseudo'
+      title: 'Pseudo',
+      width: '15%'
     },
     userFirstName: {
-      title: 'Nom'
+      title: 'Nom',
+      width: '15%'
     },
     userLastName: {
-      title: 'prénom'
+      title: 'prénom',
+      width: '15%'
     },
     email: {
-      title: 'Email'
+      title: 'Email',
+      width: '15%'
     },
 	phone: {
-      title: 'Téléphone'
+      title: 'Téléphone',
+      width: '15%'
     },
 
   },
@@ -42,11 +47,13 @@ export class FormatterListComponent implements OnInit {
     edit: false,
     delete: false,
     custom: [
-      { name: 'updateFormatter', title: '<i class ="fa-solid fa-pen"></i>' },
-      {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can" ></i>'}
+      { name: 'updateFormatter', title: '<i class ="fa-solid fa-pen" ></i>' },
+      {name:'deleteFormatter',title:'<i class="fa-solid fa-trash-can"  ></i>'},
+      {name:'formatterDetails',title:'<i class="fa-solid fa-eye" ></i>'}
 
     ],
-    position: 'right'
+    position: 'right',
+	    width: '25%'
   }
 
 };
@@ -82,8 +89,11 @@ export class FormatterListComponent implements OnInit {
         case 'updateFormatter':
           this.updateFormatter(event.data);
           break;
-       case 'deleteFormatter':
+        case 'deleteFormatter':
           this.deleteFormatter(event.data);
+          break;
+          case 'formatterDetails':
+          this.formatterDetails(event.data);
       }
     }
 

@@ -68,9 +68,8 @@
                           <div class="col_half">
                             <label> Theme</label>
                           <input type="text" class ="form-control mt-2" id = "theme"
-                              [(ngModel)] = "formation.theme" name = "theme" required #theme="ngModel"
-                              [class.is-invalid]="theme.invalid && theme.touched">
-                              <small class="text-danger" [class.d-none]="theme.valid || theme.untouched">Ce champ est nécessaire</small>
+                              [(ngModel)] = "formation.theme" name = "theme" required #theme="ngModel">
+
                           </div>
                         </div>
 

@@ -18,19 +18,24 @@ export class FormationListComponent implements OnInit {
 
     columns: {
       name: {
-        title: 'Nom'
+        title: 'Nom',
+        width: '15%'
       },
       description: {
-        title: 'Description'
+        title: 'Description',
+        width: '15%'
       },
       theme: {
-        title: 'Thème'
+        title: 'Thème',
+        width: '15%'
       },
       lien: {
-        title: 'Lien'
+        title: 'Lien',
+        width: '15%'
       },
-      date_final: {
-        title: 'Date_final'
+      formatter: {
+        title: 'Formateur',
+        width: '15%'
       },
 
     },
@@ -41,9 +46,10 @@ export class FormationListComponent implements OnInit {
       custom: [
         { name: 'updateFormation', title: '<i class ="fa-solid fa-pen"></i>' },
         {name:'deleteFormation',title:'<i class="fa-solid fa-trash-can" ></i>'},
-        {name:'formationDetails',title:'<i class="fa-solid fa-eye" ></i>'},
+        {name:'formationDetails',title:'<i class="fa-solid fa-eye" ></i>'}
       ],
-      position: 'right'
+      position: 'right',
+      width:'25%'
     }
 
   };
@@ -72,8 +78,11 @@ export class FormationListComponent implements OnInit {
       case 'updateFormation':
         this.updateFormation(event.data);
         break;
-     case 'deleteFormation':
+      case 'deleteFormation':
         this.deleteFormation(event.data);
+        break;
+      case 'formationDetails':
+        this.formationDetails(event.data);
     }
   }
 
@@ -92,8 +101,8 @@ export class FormationListComponent implements OnInit {
   }
 
   deleteFormation(event){
-    for (const theme of this.formations) {
-      this.formationService.deleteFormation(theme.id).subscribe( data => {
+    for (const formation of this.formations) {
+      this.formationService.deleteFormation(formation.id).subscribe( data => {
         console.log(data);
         this.getFormations();
       })

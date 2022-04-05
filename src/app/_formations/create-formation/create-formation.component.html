@@ -64,10 +64,11 @@
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Thèmes</mat-label>
-                              <mat-select class ="myInput"  [formControl]="Themes" multiple>
-                                <mat-option *ngFor="let theme of themes" [value]="theme">{{theme}}</mat-option>
+                              <mat-select id="theme" class ="myInput"  [(ngModel)] = "formation.theme" name = "theme" multiple>
+                                <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</mat-option>
                               </mat-select>
                             </mat-form-field>
+
                           </div>
 
 
@@ -90,7 +91,14 @@
                             </mat-form-field>
                           </div>
 
-
+                          <div class="col_half">
+                            <mat-form-field >
+                              <mat-label>Formatteur</mat-label>
+                              <mat-select id="formatter" class ="myInput"  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
+                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
                         </div>
 
                         <input type="submit" class="butt" value="Enregistrer">
