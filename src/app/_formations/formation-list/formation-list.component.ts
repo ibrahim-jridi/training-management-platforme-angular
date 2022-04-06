@@ -86,27 +86,50 @@ export class FormationListComponent implements OnInit {
     }
   }
 
-  formationDetails(event){
-    for (const formation of this.formations) {
-      this.router.navigate(['admin/formation-details', formation.id]);
-    }
+  // formationDetails(event){
+  //   for (const formation of this.formations) {
+  //     this.router.navigate(['admin/formation-details', formation.id]);
+  //   }
+
+  // }
+
+  // updateFormation(event){
+  //   for (const formation of this.formations) {
+  //     this.router.navigate(['admin/update-formation', formation.id]);
+  //   }
+
+  // }
+
+  // deleteFormation(event){
+  //   for (const formation of this.formations) {
+  //     this.formationService.deleteFormation(formation.id).subscribe( data => {
+  //       console.log(data);
+  //       this.getFormations();
+  //     })
+  //   }
+
+  // }
+  formationDetails(id:number){
+
+      this.router.navigate(['admin/formation-details', id]);
+
 
   }
 
-  updateFormation(event){
-    for (const formation of this.formations) {
-      this.router.navigate(['admin/update-formation', formation.id]);
-    }
+  updateFormation(id:number){
+
+      this.router.navigate(['admin/update-formation', id]);
+
 
   }
 
-  deleteFormation(event){
-    for (const formation of this.formations) {
-      this.formationService.deleteFormation(formation.id).subscribe( data => {
+  deleteFormation(id:number){
+
+      this.formationService.deleteFormation(id).subscribe( data => {
         console.log(data);
         this.getFormations();
       })
-    }
+
 
   }
 

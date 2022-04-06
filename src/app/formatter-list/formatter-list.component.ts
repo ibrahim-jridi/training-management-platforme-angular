@@ -53,7 +53,7 @@ export class FormatterListComponent implements OnInit {
 
     ],
     position: 'right',
-	    width: '25%'
+	    width: '30%'
   }
 
 };
@@ -100,7 +100,7 @@ export class FormatterListComponent implements OnInit {
 
  formatterDetails(event){
    for (const formatter of this.formatters) {
-    this.router.navigate(['admin/formatter-details', event.formatter.id]);
+    this.router.navigate(['admin/formatter-details', formatter.id]);
 
    }
   }

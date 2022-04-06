@@ -66,25 +66,44 @@
 
 
                           <div class="col_half">
-                            <label> Theme</label>
-                          <input type="text" class ="form-control mt-2" id = "theme"
-                              [(ngModel)] = "formation.theme" name = "theme" required #theme="ngModel">
+                            <label style="margin-left: 25px;"> Theme</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-pen"></i>
+                              <input type="text" class =" myInput" id = "theme"
+                              [(ngModel)] = "formation.theme" name = "theme"
+                              required #lName="ngModel"
+                              [class.is-invalid]="lName.invalid && lName.touched">
+                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
+                            </div>
+
 
                           </div>
                         </div>
 
                         <div class="row clearfix">
+                          <div class="col_half">
+                            <mat-form-field >
+                              <label style="margin-left: 25px;"> Date finale</label>
+                              <div class="input_field">
+                                <input matInput [matDatepicker]="date_final" class ="myInput"
+                              id = "date_final"
+                               name = "date_final" [(ngModel)] = "formation.date_final" required
+                              >
 
-                          <mat-form-field appearance="fill">
-                            <mat-label>Date finale</mat-label>
-                            <input matInput [matDatepicker]="date_final" class ="form-control"
-                            id = "date_final"
-                             name = "date_final" [(ngModel)] = "formation.date_final" required
-                            >
-                            <mat-datepicker-toggle matSuffix [for]="date_final"></mat-datepicker-toggle>
-                            <mat-datepicker #date_final></mat-datepicker>
-                          </mat-form-field>
+                              </div>
+                              <mat-datepicker-toggle matSuffix [for]="date_final"></mat-datepicker-toggle>
+                              <mat-datepicker #date_final></mat-datepicker>
+                            </mat-form-field>
+                          </div>
 
+                          <div class="col_half "  >
+                            <mat-form-field >
+                              <label style="margin-left: 25px;"> Formateur</label>
+                              <mat-select id="formatter" class ="myInput "  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
+                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
 
                         </div>
 

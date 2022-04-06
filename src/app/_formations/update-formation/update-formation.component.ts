@@ -1,3 +1,8 @@
+import { Formatter } from './../../_classes/formatter';
+import { FormatterService } from './../../_services/formatter.service';
+import { ThemeService } from './../../_services/theme.service';
+import { Theme } from './../../_classes/theme';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormationService } from './../../_services/formation.service';
 import { Formation } from './../../_classes/formation';
@@ -12,10 +17,16 @@ export class UpdateFormationComponent implements OnInit {
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   sideBarOpen = true;
+
+  Themes = new FormControl();
+  themes:Theme[];
+  Formatters = new FormControl();
+  formatters:Formatter[];
   id: number;
   formation: Formation = new Formation();
   constructor(private formationService: FormationService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,private themeService:ThemeService,
+    private formatterService:FormatterService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -24,6 +35,8 @@ export class UpdateFormationComponent implements OnInit {
     this.formationService.getFormationById(this.id).subscribe(data => {
       this.formation = data;
     }, error => console.log(error));
+    this.getThemes();
+    this.getFormatter();
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
@@ -41,6 +54,16 @@ export class UpdateFormationComponent implements OnInit {
 
   goToFormationList(){
     this.router.navigate(['admin/formation-list']);
+  }
+  getThemes(){
+    this.themeService.getThemesList().subscribe(data => {
+      this.themes = data;
+    });
+  }
+   getFormatter(){
+    this.formatterService.getFormatterList().subscribe(data => {
+      this.formatters = data;
+    });
   }
 
 }

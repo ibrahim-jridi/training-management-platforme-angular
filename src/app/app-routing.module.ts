@@ -44,7 +44,9 @@ const routes: Routes = [
   {path: 'admin/formatter-list/create-formatter', component: CreateFormatterComponent},
   {path: '', redirectTo: 'admin/formatter-list', pathMatch: 'full'},
   {path: 'admin/update-formatter/:id', component: UpdateFormatterComponent},
+  {path: 'admin/update-formatter/:id/formatter-list', component: UpdateFormatterComponent},
   {path: 'admin/formatter-details/:id', component: FormatterDetailsComponent},
+  {path: 'admin/formatter-details/:id/formatter-list', component: FormatterDetailsComponent},
   // ! Gérer themes
   {path: 'admin/theme-list', component: ThemeListComponent},
   {path: 'home/theme-list', component: ThemeListComponent},
@@ -57,7 +59,9 @@ const routes: Routes = [
   {path: 'admin/theme-list/create-theme', component: CreateThemeComponent},
   {path: '', redirectTo: 'admin/theme-list', pathMatch: 'full'},
   {path: 'admin/update-theme/:id', component: UpdateThemeComponent},
+  {path: 'admin/update-theme/:id/theme-list', component: UpdateThemeComponent},
   {path: 'admin/theme-details/:id', component: ThemeDetailsComponent},
+  {path: 'admin/theme-details/:id/theme-list', component: ThemeDetailsComponent},
   // ! Gérer formations
   {path: 'admin/formation-list', component: FormationListComponent},
   {path: 'home/formation-list', component: FormationListComponent},
@@ -70,7 +74,9 @@ const routes: Routes = [
   {path: 'admin/formation-list/create-formation', component: CreateFormationComponent},
   {path: '', redirectTo: 'admin/formation-list', pathMatch: 'full'},
   {path: 'admin/update-formation/:id', component: UpdateFormationComponent},
+  {path: 'admin/update-formation/:id/formation-list', component: UpdateFormationComponent},
   {path: 'admin/formation-details/:id', component: FormationDetailsComponent},
+  {path: 'admin/formation-details/:id/formation-list', component: FormationDetailsComponent},
 ];
 
 @NgModule({

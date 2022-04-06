@@ -1,5 +1,7 @@
 
+
 <!--  -->
+
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <!-- <mat-drawer mode="side" opened="true"> -->
@@ -8,40 +10,121 @@
   <mat-drawer-content>
     <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
         <!-- contenu du profil -->
-    <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Dashboard</div>
-          <div class="page__content shadow p-3 position-relative">
-            <div class="page__content-data position-absolute text-center">
-              <h3 style="color: rgb(62, 111, 202);margin-left: -500px; font-weight: 600;font-size: 2rem;"> Theme Détails</h3>
-              <div>
-                  <div class="mt-3">
-                      <label> <b> Nom: </b></label> {{formation.name}}
-                  </div>
-                  <div  class="mt-3">
-                      <label> <b> Description: </b></label> {{formation.description}}
-                  </div>
-                  <div  class="mt-3">
-                      <label> <b> Théme: </b></label> {{formation.description}}
-                  </div>
-                  <div  class="mt-3">
-                      <label> <b> Lien: </b></label> {{formation.lien}}
-                  </div>
-                  <div  class="mt-3">
-                      <label> <b> Date création: </b></label> {{formation.date_creation}}
-                  </div>
-                  <div  class="mt-3">
-                      <label> <b> Date finale: </b></label> {{formation.date_final}}
-                  </div>
-
-              </div>
-
-            <div>
+        <div class="container-fluid page">
+          <div class="d-flex page__box p-3 mt-2">Formation
 
           </div>
+          </div>
+    <div class="page__content shadow p-3 position-relative">
+          <!-- créer formateur -->
 
-        </div>
+        <div class="container">
+          <div class="myCard">
+            <div class="row">
+              <div >
+                <div class="myLeftCtn">
+                  <form class="myForm " >
+                    <header>Modifié Formation</header>
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Nom</label>
+                            <div class="form-group">
+                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
+                              <input type="text" class =" myInput" id = "name"
+                              [(ngModel)] = "formation.name" name = "name"
+                              required #userName="ngModel"
+                              [class.is-invalid]="userName.invalid && userName.touched">
+                              <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
+                            </div>
+                          </div>
+
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Déscription</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
+                              <input type="text" class =" myInput" id = "description"
+                              [(ngModel)] = "formation.description" name = "description"
+                              required #Name="ngModel"
+                              [class.is-invalid]="Name.invalid && Name.touched">
+                              <small class="text-danger" [class.d-none]="Name.valid || Name.untouched">Ce champ est nécessaire</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Lien</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-user"></i>
+                              <input type="text" class =" myInput" id = "lien"
+                              [(ngModel)] = "formation.lien" name = "lien"
+                              required #lName="ngModel"
+                              [class.is-invalid]="lName.invalid && lName.touched">
+                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
+                            </div>
+                          </div>
+
+
+
+                          <div class="col_half">
+                            <label style="margin-left: 25px;"> Theme</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-pen"></i>
+                              <input type="text" class =" myInput" id = "theme"
+                              [(ngModel)] = "formation.theme" name = "theme"
+                              required #lName="ngModel"
+                              [class.is-invalid]="lName.invalid && lName.touched">
+                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
+                            </div>
+
+
+                          </div>
+                        </div>
+
+                        <div class="row clearfix">
+                          <div class="col_half">
+                            <mat-form-field >
+                              <label style="margin-left: 25px;"> Date finale</label>
+                              <div class="input_field">
+                                <input matInput [matDatepicker]="date_final" class ="myInput"
+                              id = "date_final"
+                               name = "date_final" [(ngModel)] = "formation.date_final" required
+                              >
+
+                              </div>
+                              <mat-datepicker-toggle matSuffix [for]="date_final"></mat-datepicker-toggle>
+                              <mat-datepicker #date_final></mat-datepicker>
+                            </mat-form-field>
+                          </div>
+
+                          <div class="col_half "  >
+                            <mat-form-field >
+                              <label style="margin-left: 25px;"> Formateur</label>
+                              <mat-select id="formatter" class ="myInput "  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
+                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                        </div>
+
+                        <input type="submit"  routerLink="formation-list" routerLinkActive="active" class="butt" value="Retour">
+                      </form>
+                </div>
+              </div>
+            </div>
+
       </div>
+        </div>
+
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
+
+
+
+
+
+
+
+
 

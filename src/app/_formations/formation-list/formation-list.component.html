@@ -19,13 +19,31 @@
               </div>
               <h2 style="color: rgb(62, 111, 202);margin-left: -500px;"> liste des formations</h2>
               <div class="page__content shadow p-3 position-relative">
-			  <button mat-raised-button  routerLink="create-formation" routerLinkActive="active"  class="btn btn-primary mt-2"  ><mat-icon>add</mat-icon>
-                  </button>
-                 <ng2-smart-table
+			          <button mat-raised-button  routerLink="create-formation" routerLinkActive="active"  class="btn btn-primary mt-2"  ><mat-icon>add</mat-icon>
+                </button>
+                <!-- Smart table view -->
+                 <!-- <ng2-smart-table
                 [settings]="settings"
                 [source]="formations"
                 (custom)="onCustomAction($event)"
-                ></ng2-smart-table>
+                ></ng2-smart-table> -->
+
+                <!-- card view -->
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+                  <div class="col " *ngFor="let formation of formations">
+                    <div class="card h-100 border-light mb-3" style="max-width: 18rem;">
+                      <img src="./../../../assets/edu.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{formation.name}}</h5>
+                        <p class="card-text">{{formation.description}}</p>
+                        <button type="button" (click) = "updateFormation(formation.id)"  class="btn btn-secondary"><i class ="fa-solid fa-pen"></i></button>
+                        <button type="button" (click) = "deleteFormation(formation.id)"  class="btn btn-danger"><i class="fa-solid fa-trash-can" ></i></button>
+                        <button type="button" (click) = "formationDetails(formation.id)"  class="btn btn-info"><i class="fa-solid fa-eye" ></i></button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <!-- <table class = "table table-striped">
