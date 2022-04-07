@@ -77,11 +77,21 @@
                         </div>
 
                         <div class="row clearfix">
-
+                          <div class="col_half">
+                            <mat-form-field >
+                              <mat-label>Date de début </mat-label>
+                              <input matInput [matDatepicker]="date_debut" class ="myInput"
+                              id = "date_debut"
+                               name = "date_debut" [(ngModel)] = "formation.date_debut" required
+                              >
+                              <mat-datepicker-toggle matSuffix [for]="date_debut"></mat-datepicker-toggle>
+                              <mat-datepicker #date_debut></mat-datepicker>
+                            </mat-form-field>
+                          </div>
 
                           <div class="col_half">
                             <mat-form-field >
-                              <mat-label>Date finale</mat-label>
+                              <mat-label>Date de fin</mat-label>
                               <input matInput [matDatepicker]="date_final" class ="myInput"
                               id = "date_final"
                                name = "date_final" [(ngModel)] = "formation.date_final" required
@@ -90,6 +100,8 @@
                               <mat-datepicker #date_final></mat-datepicker>
                             </mat-form-field>
                           </div>
+                        </div>
+                        <div class="row clearfix">
 
                           <div class="col_half">
                             <mat-form-field >

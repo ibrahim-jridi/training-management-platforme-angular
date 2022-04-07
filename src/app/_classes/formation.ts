@@ -7,7 +7,8 @@ export class Formation {
   theme:Theme[];
   formatter:Formatter[];
   lien:String;
-  date_creation:String;
+  date_creation:Date;
+  date_debut:Date;
   date_final:Date;
 
 }
