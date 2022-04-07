@@ -23,7 +23,7 @@ import { AuthGuard } from './_auth/auth.guard';
 // import { ResponseResetComponent } from './response-reset/response-reset.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['User']} },
@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: 'admin/formatter-list/theme-list/formatter-list', component: FormatterListComponent},
   {path: 'admin/create-formatter', component: CreateFormatterComponent},
   {path: 'admin/formatter-list/create-formatter', component: CreateFormatterComponent},
-  {path: '', redirectTo: 'admin/formatter-list', pathMatch: 'full'},
+  //{path: '', redirectTo: 'admin/formatter-list', pathMatch: 'full'},
   {path: 'admin/update-formatter/:id', component: UpdateFormatterComponent},
   {path: 'admin/update-formatter/:id/formatter-list', component: UpdateFormatterComponent},
   {path: 'admin/formatter-details/:id', component: FormatterDetailsComponent},
