@@ -1,8 +1,10 @@
+import { CustomValidators } from './../_classes/custom-validators';
 import { Formatter } from './../_classes/formatter';
 import { FormatterService } from './../_services/formatter.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-update-formatter',
@@ -15,6 +17,8 @@ export class UpdateFormatterComponent implements OnInit {
 
   id: number;
   formatter: Formatter = new Formatter();
+
+  submitted = false;
   constructor(private formatterService: FormatterService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -33,7 +37,14 @@ export class UpdateFormatterComponent implements OnInit {
     this.toggleSidebarForMe.emit();
   }
 
+  // get f() {
+  //   return this.updateForm.controls;
+  // }
+
   onSubmit(){
+    CustomValidators.mustMatch('userPassword', 'userConfirmPassword')
+    this.submitted = true;
+
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
       this.goToFormatterList();
     }

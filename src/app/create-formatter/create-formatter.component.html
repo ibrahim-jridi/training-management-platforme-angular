@@ -22,7 +22,7 @@
             <div class="row">
               <div >
                 <div class="myLeftCtn">
-                  <form class="myForm " (ngSubmit) = "onSubmit()">
+                  <form  class="myForm " (ngSubmit) = "onSubmit()">
                     <header>Créer un formateur</header>
                         <div class="row clearfix">
                           <div class="col_half">
@@ -103,6 +103,26 @@
                               <small class="text-danger mt-2" [class.d-none]="pass.valid || pass.untouched">Ce champ est nécessaire</small>
                             </div>
                           </div>
+
+
+                        </div>
+                        <div class="row clearfix">
+
+                          <div class="col_half">
+                            <label style="margin-left: 25px;">Confirmé mot de passe</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-lock"></i>
+
+                                <input class="myInput" type="password" value={{formatter.userConfirmPassword}}  id = "userConfirmPassword"
+                                [(ngModel)] = "formatter.userConfirmPassword" name = "userConfirmPassword"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                                >
+                                <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
+
+
+                            </div>
+                          </div>
+
 
 
                         </div>

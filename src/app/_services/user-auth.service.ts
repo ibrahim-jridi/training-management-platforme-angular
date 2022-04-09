@@ -29,4 +29,15 @@ export class UserAuthService {
   public isLoggedIn() {
     return this.getRoles() && this.getToken();
   }
+  getUserDetails() {
+    return JSON.parse(localStorage.getItem('jwtToken')).userName;
+    return JSON.parse(localStorage.getItem('jwtToken')).userFirstName;
+    return JSON.parse(localStorage.getItem('jwtToken')).userLastName;
+    return JSON.parse(localStorage.getItem('jwtToken')).email;
+    return JSON.parse(localStorage.getItem('jwtToken')).specialite;
+    return JSON.parse(localStorage.getItem('jwtToken')).adresse;
+    return JSON.parse(localStorage.getItem('jwtToken')).phone;
+    return JSON.parse(localStorage.getItem('jwtToken')).userPassword;
+    return JSON.parse(localStorage.getItem('jwtToken')).userConfirmPassword;
+}
 }

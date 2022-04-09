@@ -1,3 +1,5 @@
+import { CustomValidators } from './../_classes/custom-validators';
+import { FormGroup } from '@angular/forms';
 import { Formatter } from './../_classes/formatter';
 import { FormatterService } from './../_services/formatter.service';
 import { Router } from '@angular/router';
@@ -15,6 +17,12 @@ export class CreateFormatterComponent implements OnInit {
   sideBarOpen = true;
 
     formatter: Formatter = new Formatter();
+    // createForm = new FormGroup(
+    //   { },
+
+    //   CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
+    // );
+    submitted = false;
     constructor(private formatterService: FormatterService,
       private router: Router) { }
 
@@ -46,8 +54,13 @@ export class CreateFormatterComponent implements OnInit {
     goToFormatterList(){
       this.router.navigate(['/admin/formatter-list']);
     }
+    // get f() {
+    //   return this.createForm.controls;
+    // }
 
     onSubmit(){
+      CustomValidators.mustMatch('userPassword', 'userConfirmPassword')
+      this.submitted = true;
       console.log(this.formatter);
       this.saveFormatter();
       this.saveFormatterr();

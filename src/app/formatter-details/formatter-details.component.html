@@ -90,17 +90,17 @@
                               <small class="text-danger" [class.d-none]="email.valid || email.untouched">Ce champ est nécessaire</small>
                             </div>
                           </div>
-                          <div class="col_half">
+                          <!-- <div class="col_half">
                             <label style="margin-left: 25px;">Mot de passe</label>
                             <div class="input_field">
                               <i aria-hidden="true" class="fas fa fa-lock"></i>
-                              <input type="password" class ="myInput" id = "userPassword"
+                              <input type="text" class ="myInput" id = "userPassword"
                               [(ngModel)] = "formatter.userPassword" name = "userPassword"
                               required #pass="ngModel"
                               [class.is-invalid]="pass.invalid && pass.touched">
                               <small class="text-danger mt-2" [class.d-none]="pass.valid || pass.untouched">Ce champ est nécessaire</small>
                             </div>
-                          </div>
+                          </div> -->
 
 
                         </div>

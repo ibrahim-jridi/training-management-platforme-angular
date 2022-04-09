@@ -53,7 +53,7 @@ export class FormatterListComponent implements OnInit {
 
     ],
     position: 'right',
-	    width: '30%'
+	    width: '40%'
   }
 
 };

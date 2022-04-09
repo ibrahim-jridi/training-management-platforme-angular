@@ -1,3 +1,5 @@
+import { CustomValidators } from './../_classes/custom-validators';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 
@@ -22,16 +24,25 @@ export class FormatterComponent implements OnInit {
   retrieveResonse: any;
   imageName: any;
   progress = 0;
-  
 
-  id:number;
+
+  id:any;
     userFirstName : string;
     userLastName : string;
     userName : string;
     email : string;
-    address : string;
+    adresse : string;
     phone : string;
+    specialite: string;
   formatter: Formatter = new Formatter();
+
+
+  // updateForm = new FormGroup(
+  //   { },
+
+  //   CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
+  // );
+  submitted = false;
   constructor(private userService: UserService,
     private userAuthService: UserAuthService,
     private router: Router,
@@ -42,26 +53,26 @@ export class FormatterComponent implements OnInit {
 
   ngOnInit(): void {
     // this.forFormatter();
-    this.getImage();
-    this.id = this.route.snapshot.params['id'];
-
-
+    this.isLoggedIn();
+    this.id = this.route.snapshot.paramMap.get('id');
     // this.formatterService.getFormatterById(this.id).subscribe(data => {
     //   this.formatter = data;
     // }, error => console.log(error));
-    this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
+    /*this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
       this.formatter = formatter
 
       this.userFirstName = formatter.userFirstName;
       this.userLastName = formatter.userLastName;
       this.userName = formatter.userName;
       this.email = formatter.email;
-      this.address = formatter.adresse;
+      this.specialite = formatter.specialite;
+      this.adresse = formatter.adresse;
       this.phone = formatter.phone;
   }, (error : ErrorEvent) => {
       console.log(error)
-  })
-  }
+  })*/
+  this.userAuthService.getUserDetails();
+}
 
 
   public isLoggedIn() {
@@ -72,7 +83,12 @@ export class FormatterComponent implements OnInit {
     this.userAuthService.clear();
     this.router.navigate(['/login']);
   }
+  // get f() {
+  //   return this.updateForm.controls;
+  // }
   onSubmit(){
+    CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
+    this.submitted = true;
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
 
     }
@@ -80,14 +96,14 @@ export class FormatterComponent implements OnInit {
   }
 
 
-  //Gets called when the user selects an image
+  // * Gets called when the user selects an image
   public onFileChanged(event) {
     //Select File
     this.selectedFile = event.target.files[0];
   }
 
 
-  //Gets called when the user clicks on submit to upload the image
+  // * Gets called when the user clicks on submit to upload the image
   onUpload() {
     console.log(this.selectedFile);
     this.progress = 0;
@@ -121,7 +137,7 @@ export class FormatterComponent implements OnInit {
 
   }
 
-    //Gets called when the user clicks on retieve image button to get the image from back end
+    // * Gets called when the user clicks on retieve image button to get the image from back end
     getImage() {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.httpClient.get(`${environment.image}/get/` + this.imageName)
@@ -144,6 +160,7 @@ export class FormatterComponent implements OnInit {
   //     }
   //   );
   // }
+
 }
 
 
