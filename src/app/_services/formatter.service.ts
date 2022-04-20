@@ -4,6 +4,8 @@ import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+const USERNAME_KEY = 'USERNAME';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,11 +32,22 @@ export class FormatterService {
     return this.httpClient.get<Formatter>(`${environment.FAPII}/${id}`);
   }
 
-  updateFormatter(id:number, formatters: Formatter): Observable<Object>{
-    return this.httpClient.put(`${environment.FAPII}/${id}`, formatters);
+  updateFormatter(id:number, formatters: Formatter): Observable<Formatter>{
+    return this.httpClient.put<Formatter>(`${environment.FAPII}/${id}`, formatters);
   }
 
   deleteFormatter(id: number): Observable<Object>{
     return this.httpClient.delete(`${environment.FAPII}/${id}`);
+  }
+  findByFormatterName(username: string): Observable<any> {
+    return  this.httpClient.get<any>(`${environment.findFormatter}/${username}`);
+  }
+  // * save UserName
+  saveFormatterName(username: string) {
+    window.localStorage.removeItem(USERNAME_KEY);
+    window.localStorage.setItem(USERNAME_KEY, username);
+  }
+  getFormatterName(): string {
+    return localStorage.getItem(USERNAME_KEY);
   }
 }

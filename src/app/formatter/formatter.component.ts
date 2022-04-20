@@ -34,7 +34,7 @@ export class FormatterComponent implements OnInit {
     adresse : string;
     phone : string;
     specialite: string;
-  formatter: Formatter = new Formatter();
+    formatter: Formatter = {} as Formatter;
 
 
   // updateForm = new FormGroup(
@@ -49,16 +49,28 @@ export class FormatterComponent implements OnInit {
     private formatterService: FormatterService,
     private route: ActivatedRoute,
     private httpClient: HttpClient
-    ) { }
+    ) {
+      /* this.route.params.subscribe(
+        params => {
+          this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
+            this.formatter = formatter;
+          })
+        }
+      ) */
+    }
 
   ngOnInit(): void {
     // this.forFormatter();
     this.isLoggedIn();
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.getFormatter();
+    // this.id = this.route.snapshot.paramMap.get('id');
+    // this.forFormatter(this.id);
+
     // this.formatterService.getFormatterById(this.id).subscribe(data => {
     //   this.formatter = data;
     // }, error => console.log(error));
-    /*this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
+    /*
+     this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
       this.formatter = formatter
 
       this.userFirstName = formatter.userFirstName;
@@ -71,7 +83,11 @@ export class FormatterComponent implements OnInit {
   }, (error : ErrorEvent) => {
       console.log(error)
   })*/
-  this.userAuthService.getUserDetails();
+  //this.userAuthService.getUserDetails();
+  this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
+    this.formatter = formatter;
+  })
+
 }
 
 
@@ -90,20 +106,43 @@ export class FormatterComponent implements OnInit {
     CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
     this.submitted = true;
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
-
+      window.location.reload();
     }
     , error => console.log(error));
+
   }
 
+// * calling formatter from userController
+  /* forFormatter(id:number) {
+     this.userService.forFormatter(id).subscribe(
+       (formatter:any) => {
+         console.log(formatter);
+         this.formatter = formatter
 
-  // * Gets called when the user selects an image
+       this.userFirstName = formatter.userFirstName;
+       this.userLastName = formatter.userLastName;
+       this.userName = formatter.userName;
+       this.email = formatter.email;
+       this.specialite = formatter.specialite;
+       this.adresse = formatter.adresse;
+     this.phone = formatter.phone;
+       },
+       (error)=>{
+         console.log(error);
+       }
+     );
+   }*/
+
+
+
+  // ! called to uplaod the image
   public onFileChanged(event) {
     //Select File
     this.selectedFile = event.target.files[0];
   }
 
 
-  // * Gets called when the user clicks on submit to upload the image
+  // ! Gets called when the user clicks on submit to upload the image
   onUpload() {
     console.log(this.selectedFile);
     this.progress = 0;
@@ -137,7 +176,7 @@ export class FormatterComponent implements OnInit {
 
   }
 
-    // * Gets called when the user clicks on retieve image button to get the image from back end
+    // ! Gets called when the user clicks on retieve image button to get the image from back end
     getImage() {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.httpClient.get(`${environment.image}/get/` + this.imageName)
@@ -149,17 +188,36 @@ export class FormatterComponent implements OnInit {
         }
       );
   }
-  // forFormatter() {
-  //   this.userService.forFormatter().subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       this.message = response;
-  //     },
-  //     (error)=>{
-  //       console.log(error);
-  //     }
-  //   );
-  // }
+  forFormatter(id:any) {
+    this.userService.forFormatter(id).subscribe(
+      (formatter:Formatter) => {
+      this.formatter = formatter
+
+      this.userFirstName = formatter.userFirstName;
+      this.userLastName = formatter.userLastName;
+      this.userName = formatter.userName;
+      this.email = formatter.email;
+      this.specialite = formatter.specialite;
+      this.adresse = formatter.adresse;
+      this.phone = formatter.phone;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+  }
+  updateFormatter(id) {
+    this.formatterService.updateFormatter( id,this.formatter).subscribe(formatter => {
+      this.formatter = formatter;
+      window.location.reload();
+    })
+  }
+  // get formatter information for jwt token
+  getFormatter() {
+    this.formatterService.getFormatterById(this.id).subscribe(formatter => {
+      this.formatter = formatter;
+    })
+  }
 
 }
 

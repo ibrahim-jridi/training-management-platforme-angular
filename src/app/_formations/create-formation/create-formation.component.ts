@@ -67,5 +67,5 @@ export class CreateFormationComponent implements OnInit {
       this.formatters = data;
     });
   }
-
+  
 }

@@ -1,15 +1,17 @@
+import { User } from './../_classes/user';
 import { environment } from './../../environments/environment';
 
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
+const USERNAME_KEY = 'USERNAME';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  // * PATH_OF_API = 'http://localhost:9090';
+
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
@@ -32,10 +34,11 @@ export class UserService {
     });
   }
 
-  public forFormatter() {
-    return this.httpclient.get(`${environment.API}/forFormatter`, {
-      responseType: 'text',
-    });
+  public forFormatter(id:any) {
+    return this.httpclient.get(`${environment.API}/forFormatter/${id}`);
+    // , {
+    //   responseType: 'text',
+    // });
   }
 
   public forAdmin() {
@@ -60,6 +63,20 @@ export class UserService {
         }
       }
     }
+  }
+  addUser(user: User): Observable<User> {
+    return this.httpclient.post<User>(`${environment.addUser1}`, user);
+  }
+  findByUserName(username: string): Observable<any> {
+    return  this.httpclient.get<any>(`${environment.findFormatter}/${username}`);
+  }
+  // * save UserName
+  saveUserName(username: string) {
+    window.localStorage.removeItem(USERNAME_KEY);
+    window.localStorage.setItem(USERNAME_KEY, username);
+  }
+  getUserName(): string {
+    return localStorage.getItem(USERNAME_KEY);
   }
 // forgot and reset password APIs
  /* TODO : requestReset(body): Observable<any> {

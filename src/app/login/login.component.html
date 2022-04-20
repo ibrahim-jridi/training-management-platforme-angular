@@ -52,6 +52,7 @@
           <form control="" class="form-group" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="row">
               <input type="text" ngModel
+              [(ngModel)]="user.userName"
               name="userName"
               id="userName"
               placeholder="Enter your username"
@@ -64,6 +65,7 @@
             <div class="row">
               <!-- <span class="fa fa-lock"></span> -->
               <input type="password" ngModel
+              [(ngModel)]="user.userPassword"
               name="userPassword"
               id="userPassword"
               placeholder="Enter your password"
