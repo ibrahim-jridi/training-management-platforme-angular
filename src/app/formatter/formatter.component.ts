@@ -1,3 +1,5 @@
+import { Formation } from './../_classes/formation';
+import { FormationService } from './../_services/formation.service';
 import { CustomValidators } from './../_classes/custom-validators';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -24,17 +26,10 @@ export class FormatterComponent implements OnInit {
   retrieveResonse: any;
   imageName: any;
   progress = 0;
-
-
   id:any;
-    userFirstName : string;
-    userLastName : string;
-    userName : string;
-    email : string;
-    adresse : string;
-    phone : string;
-    specialite: string;
-    formatter: Formatter = {} as Formatter;
+  formatter: Formatter = {} as Formatter;
+  formations: Formation [];
+  userName;
 
 
   // updateForm = new FormGroup(
@@ -47,22 +42,18 @@ export class FormatterComponent implements OnInit {
     private userAuthService: UserAuthService,
     private router: Router,
     private formatterService: FormatterService,
+    private formationService: FormationService,
     private route: ActivatedRoute,
     private httpClient: HttpClient
     ) {
-      /* this.route.params.subscribe(
-        params => {
-          this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
-            this.formatter = formatter;
-          })
-        }
-      ) */
+
     }
 
   ngOnInit(): void {
-    // this.forFormatter();
+
     this.isLoggedIn();
     this.getFormatter();
+    this.getFormationList();
     // this.id = this.route.snapshot.paramMap.get('id');
     // this.forFormatter(this.id);
 
@@ -188,24 +179,7 @@ export class FormatterComponent implements OnInit {
         }
       );
   }
-  forFormatter(id:any) {
-    this.userService.forFormatter(id).subscribe(
-      (formatter:Formatter) => {
-      this.formatter = formatter
 
-      this.userFirstName = formatter.userFirstName;
-      this.userLastName = formatter.userLastName;
-      this.userName = formatter.userName;
-      this.email = formatter.email;
-      this.specialite = formatter.specialite;
-      this.adresse = formatter.adresse;
-      this.phone = formatter.phone;
-      },
-      (error)=>{
-        console.log(error);
-      }
-    );
-  }
   updateFormatter(id) {
     this.formatterService.updateFormatter( id,this.formatter).subscribe(formatter => {
       this.formatter = formatter;
@@ -218,8 +192,26 @@ export class FormatterComponent implements OnInit {
       this.formatter = formatter;
     })
   }
+//get formation list
+  getFormationList() {
+    this.formatterService.getFormatterById(this.id).subscribe(formatter => {
+      this.formatter = formatter;
+      this.userName=formatter.userName;
+    })
 
-}
+    for (let i = 0; i < this.formations.length; i++) {
+      if(this.formations[i].formatter[this.userName] == this.formatter.userName){
+        this.formationService.getFormationsList().subscribe(data => {
+          this.formations = data;
+        })
+      };
+     }
+
+
+    }
+  }
+
+
 
 
 
