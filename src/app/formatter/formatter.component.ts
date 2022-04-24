@@ -20,6 +20,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormatterComponent implements OnInit {
   message;
+  //userFile;
+  public imagePath;
+  imgURL;
   selectedFile: File;
   retrievedImage: any;
   base64Data: any;
@@ -30,7 +33,6 @@ export class FormatterComponent implements OnInit {
   formatter: Formatter = {} as Formatter;
   formations: Formation [];
   userName;
-
 
   // updateForm = new FormGroup(
   //   { },
@@ -52,8 +54,8 @@ export class FormatterComponent implements OnInit {
   ngOnInit(): void {
 
     this.isLoggedIn();
-    this.getFormatter();
-    this.getFormationList();
+    //this.getFormatter();
+    //this.getFormationList();
     // this.id = this.route.snapshot.paramMap.get('id');
     // this.forFormatter(this.id);
 
@@ -75,9 +77,7 @@ export class FormatterComponent implements OnInit {
       console.log(error)
   })*/
   //this.userAuthService.getUserDetails();
-  this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
-    this.formatter = formatter;
-  })
+ this.getFormatterByName()
 
 }
 
@@ -98,6 +98,7 @@ export class FormatterComponent implements OnInit {
     this.submitted = true;
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
       window.location.reload();
+
     }
     , error => console.log(error));
 
@@ -132,6 +133,25 @@ export class FormatterComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
+  // TODO: still under work
+// ! select file
+onSelectFile(event) {
+  if (event.target.files.length >0) {
+    const file = event.target.files[0];
+    this.formatter.image = file;
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath=file;
+    reader.readAsDataURL(file);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
+  }
+}
 
   // ! Gets called when the user clicks on submit to upload the image
   onUpload() {
@@ -192,24 +212,32 @@ export class FormatterComponent implements OnInit {
       this.formatter = formatter;
     })
   }
-//get formation list
-  getFormationList() {
-    this.formatterService.getFormatterById(this.id).subscribe(formatter => {
+  //get formatter from jwt token
+  getFormatterByName() {
+    this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
       this.formatter = formatter;
-      this.userName=formatter.userName;
     })
-
-    for (let i = 0; i < this.formations.length; i++) {
-      if(this.formations[i].formatter[this.userName] == this.formatter.userName){
-        this.formationService.getFormationsList().subscribe(data => {
-          this.formations = data;
-        })
-      };
-     }
-
-
-    }
   }
+
+
+//get formation list
+  // getFormationList() {
+  //   this.formatterService.getFormatterById(this.id).subscribe(formatter => {
+  //     this.formatter = formatter;
+  //     this.userName=formatter.userName;
+  //   })
+
+  //   for (let i = 0; i < this.formations.length; i++) {
+  //     if(this.formations[i].formatter[this.userName] == this.formatter.userName){
+  //       this.formationService.getFormationsList().subscribe(data => {
+  //         this.formations = data;
+  //       })
+  //     };
+  //    }
+
+
+  // }
+}
 
 
 

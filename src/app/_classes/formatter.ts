@@ -9,4 +9,5 @@ export class Formatter {
 	phone:string;
   specialite:string;
   adresse:string;
+  image;
 }

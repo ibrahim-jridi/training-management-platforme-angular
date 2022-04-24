@@ -6,7 +6,7 @@ body{
     width: 110px;
     margin: auto;
     margin-bottom: 20px;
-    
+
 }
 
 .user-box img {
@@ -26,6 +26,10 @@ body{
 
 .profile-card-2 .card .card-body {
 	z-index:1;
+
+}
+.bg-card {
+  background-color: #1e293b;
 }
 
 .profile-card-2 .card::before {
@@ -113,7 +117,7 @@ body{
     border: 1px solid transparent;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
-	
+
 }
 .nav-tabs .nav-link:hover{
     border: 1px solid transparent;
@@ -348,7 +352,7 @@ body{
 	-webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 
 }
 
@@ -419,12 +423,12 @@ body{
     box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
 }
 ::ng-deep mat-menu-content {
-   
+
     width: 100px;
-  
+
 }
 button {
   outline: none;
   border: solid;
-  
+
 }
