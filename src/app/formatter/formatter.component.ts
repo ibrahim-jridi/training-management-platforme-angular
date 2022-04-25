@@ -160,7 +160,7 @@ onSelectFile(event) {
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
     if (this.selectedFile != null) {
-      uploadImageData.append('myFile', this.selectedFile, this.selectedFile.name);
+      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
       this.httpClient.post(`${environment.image}/upload`, uploadImageData, { observe: 'events', reportProgress: true })
         .subscribe(event => {
           if (event.type === HttpEventType.UploadProgress )

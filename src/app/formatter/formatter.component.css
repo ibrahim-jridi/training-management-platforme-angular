@@ -105,7 +105,7 @@ body{
 
 /*Nav Tabs & Pills */
 .nav-tabs .nav-link {
-    color: #223035;
+    color: #203036;
 	font-size: 12px;
     text-align: center;
 	letter-spacing: 1px;
@@ -136,14 +136,14 @@ body{
 }
 
 .nav-tabs-primary.nav-tabs{
-	border-bottom: 1px solid #008cff;
+	border-bottom: 1px solid #203036;
 }
 
 .nav-tabs-primary .nav-link.active, .nav-tabs-primary .nav-item.show>.nav-link {
-    color: #008cff;
+    color: #203036;
     background-color: #fff;
-    border-color: #008cff #008cff #fff;
-    border-top: 3px solid #008cff;
+    border-color: #203036 #203036 #fff;
+    border-top: 3px solid #203036;
 }
 
 .nav-tabs-success.nav-tabs{

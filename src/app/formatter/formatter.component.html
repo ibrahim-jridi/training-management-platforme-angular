@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 100px;" *ngIf="isLoggedIn()" >
+<div class="container" style="margin-top: 100px;" >
 <div class="row">
         <div class="col-lg-4">
            <div class="profile-card-4 z-depth-3">
@@ -46,19 +46,22 @@
                    <h4 class="mb-1 line-height-5">154</h4>
                     <small class="mb-0 font-weight-bold">Projects</small>
                    </div>
-                    <div class="col p-2" *ngIf="isLoggedIn()" >
-						<mat-menu #menu="matMenu">
-							<button mat-menu-item  (click)="logout()" style="background:red;">
-								<mat-icon>exit_to_app</mat-icon>
-								Déconnexion
-							</button>
-						</mat-menu>
-                    </div>
+                    
                     <div class="col p-2">
                      <h4 class="mb-1 line-height-5">9.1k</h4>
                      <small class="mb-0 font-weight-bold">Views</small>
                     </div>
                  </div>
+				 <div class="  row text-center ml-1 col p-2"  >
+							<button type="button" class="btn btn-danger" (click)="logout()" style="border-radius: 50px 15px;" >Déconnexion</button>
+						<!-- <mat-menu #menu="matMenu">
+							<button mat-menu-item  (click)="logout()" style="background:red;">
+								<mat-icon>exit_to_app</mat-icon>
+								Déconnexion
+							</button>
+						</mat-menu> -->
+						
+                    </div>
                </div>
                <div class="card-footer text-center">
                  <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i class="fa fa-facebook"></i></a>
@@ -223,7 +226,7 @@
                                 <input class="form-control" type="file" accept="image/*" (change)="onFileChanged($event)">
                             </div>
                             <div class="col-md-6">
-                              <input type="button" (click)="onUpload(); getImage()"  value="upload">
+                              <input type="button" (click)="onUpload()"  value="upload">
                           </div>
                         </div>
                         <div *ngIf="selectedFile" class="progress my-3">
@@ -286,7 +289,7 @@
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                                 <input type="reset" class="btn btn-secondary" value="Annuler">
-                                <input type="submit" class="btn btn-primary"  value="Enregistrer">
+                                <input type="submit" class="btn btn-primary" (click)=" getImage()"  value="Enregistrer">
                             </div>
                         </div>
                     </form>
