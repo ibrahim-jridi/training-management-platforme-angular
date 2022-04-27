@@ -10,6 +10,7 @@ export const environment = {
   FAPII:'http://localhost:9090/admin/formatterss',// get formatter from formatterDao
   TAPI:'http://localhost:9090/admin/themes',
   findFormatter:'http://localhost:9090/admin/findByUsername',
+  findUser:'http://localhost:9090/findByUsername',
   addUser:'http://localhost:9090/admin/addUser',
   addUser1:'http://localhost:9090/addUser',
   formation:'http://localhost:9090/admin/formations',

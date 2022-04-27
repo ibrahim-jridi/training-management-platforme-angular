@@ -19,7 +19,7 @@ user: User = {} as User;
     public userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUser();
+    this.getUserByName() ;
   }
 
 
@@ -38,4 +38,10 @@ user: User = {} as User;
       this.user = user;
     })
   }
+  getUserByName() {
+    this.userService.findByUserName(this.userService.getUserName()).subscribe(user => {
+      this.user = user;
+    })
+  }
+  
 }

@@ -67,8 +67,9 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.httpclient.post<User>(`${environment.addUser1}`, user);
   }
+
   findByUserName(username: string): Observable<any> {
-    return  this.httpclient.get<any>(`${environment.findFormatter}/${username}`);
+    return  this.httpclient.get<any>(`${environment.findUser}/${username}`);
   }
   // * save UserName
   saveUserName(username: string) {

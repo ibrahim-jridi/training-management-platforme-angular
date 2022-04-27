@@ -18,9 +18,9 @@ export class UpdateFormationComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   sideBarOpen = true;
 
-  Themes = new FormControl();
+  Themes  :string ="";
   themes:Theme[];
-  Formatters = new FormControl();
+  Formatters :string ="";
   formatters:Formatter[];
   id: number;
   formation: Formation = new Formation();

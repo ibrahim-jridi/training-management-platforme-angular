@@ -220,23 +220,12 @@ onSelectFile(event) {
   }
 
 
-//get formation list
-  // getFormationList() {
-  //   this.formatterService.getFormatterById(this.id).subscribe(formatter => {
-  //     this.formatter = formatter;
-  //     this.userName=formatter.userName;
-  //   })
-
-  //   for (let i = 0; i < this.formations.length; i++) {
-  //     if(this.formations[i].formatter[this.userName] == this.formatter.userName){
-  //       this.formationService.getFormationsList().subscribe(data => {
-  //         this.formations = data;
-  //       })
-  //     };
-  //    }
+//get formation list according to current user
+  
 
 
-  // }
+
+
 }
 
 

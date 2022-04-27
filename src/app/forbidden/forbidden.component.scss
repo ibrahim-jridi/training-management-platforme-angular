@@ -29,6 +29,26 @@ h1 {
  background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
  	background-blend-mode: normal, multiply;
 }
+h3 {
+	position: relative;
+    z-index: 1;
+    
+    color:  #000;
+    margin-top: 200px;
+    
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+		z-index: 1;
+		background-color: #E4E4E1;
+ background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+ 	background-blend-mode: normal, multiply;
+}
 span {
 	position: relative;
 }

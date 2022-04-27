@@ -66,7 +66,7 @@
 
 
                           <div class="col_half">
-                            <label style="margin-left: 25px;"> Theme</label>
+                            <label style="margin-left: 25px;"> Thème</label>
                             <div class="input_field">
                               <i aria-hidden="true" class="fas fa fa-pen"></i>
                               <input type="text" class =" myInput" id = "theme"
@@ -111,13 +111,17 @@
                         <div class="row clearfix">
 
 
-                          <div class="col_half "  >
-                            <mat-form-field >
-                              <label style="margin-left: 25px;"> Formateur</label>
-                              <mat-select id="formatter" class ="myInput "  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
-                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
-                              </mat-select>
-                            </mat-form-field>
+                          <div class="col_half">
+                            <label style="margin-left: 25px;"> Formateur</label>
+                            <div class="input_field">
+                              <i aria-hidden="true" class="fas fa fa-pen"></i>
+                              <input type="text" class =" myInput" id = "formatter"
+                              [(ngModel)] = "formation.formatter" name = "formatter"
+                              required #formatter="ngModel"
+                              >
+                            </div>
+
+
                           </div>
 
                         </div>

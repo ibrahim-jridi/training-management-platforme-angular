@@ -20,9 +20,9 @@ export class CreateFormationComponent implements OnInit {
 
   sideBarOpen = true;
   formation: Formation = new Formation();
-  Themes = new FormControl();
+  Themes :string = "";
   themes:Theme[]
-  Formatters = new FormControl();
+  Formatters : string ="";
   formatters:Formatter[];
 
   constructor(private formationService: FormationService, private themeService:ThemeService,
@@ -67,5 +67,5 @@ export class CreateFormationComponent implements OnInit {
       this.formatters = data;
     });
   }
-  
+
 }

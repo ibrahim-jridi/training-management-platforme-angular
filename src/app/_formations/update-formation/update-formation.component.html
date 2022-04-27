@@ -66,16 +66,12 @@
 
 
                           <div class="col_half">
-                            <label style="margin-left: 25px;"> Theme</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-pen"></i>
-                              <input type="text" class =" myInput" id = "theme"
-                              [(ngModel)] = "formation.theme" name = "theme"
-                              required #lName="ngModel"
-                              [class.is-invalid]="lName.invalid && lName.touched">
-                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
-                            </div>
-
+                            <mat-form-field >
+                              <mat-label>Thème</mat-label>
+                              <mat-select id="theme" class ="myInput"  [(ngModel)] = "Themes" name = "theme" multiple>
+                                <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
 
                           </div>
                         </div>
@@ -115,7 +111,7 @@
                           <div class="col_half "  >
                             <mat-form-field >
                               <label style="margin-left: 25px;"> Formateur</label>
-                              <mat-select id="formatter" class ="myInput "  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
+                              <mat-select id="formatter" class ="myInput "  [(ngModel)] = "Formatters" name = "formatter" multiple>
                                 <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
                               </mat-select>
                             </mat-form-field>

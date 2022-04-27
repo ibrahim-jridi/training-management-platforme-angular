@@ -64,7 +64,7 @@
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Thèmes</mat-label>
-                              <mat-select id="theme" class ="myInput"  [(ngModel)] = "formation.theme" name = "theme" multiple>
+                              <mat-select id="theme" class ="myInput"  [(ngModel)] = "Themes" name = "theme" multiple>
                                 <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</mat-option>
                               </mat-select>
                             </mat-form-field>
@@ -73,7 +73,7 @@
 
                         </div>
                         <!-- make color input with multiple choice -->
-                        
+
 
                         <div class="row clearfix">
                           <div class="col_half">
@@ -105,7 +105,7 @@
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Formatteur</mat-label>
-                              <mat-select id="formatter" class ="myInput"  [(ngModel)] = "formation.formatter" name = "formatter" multiple>
+                              <mat-select id="formatter" class ="myInput"  [(ngModel)] = "Formatters" name = "formatter" multiple>
                                 <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
                               </mat-select>
                             </mat-form-field>
