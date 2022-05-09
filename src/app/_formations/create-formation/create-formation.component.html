@@ -64,8 +64,11 @@
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Thèmes</mat-label>
-                              <mat-select id="theme" class ="myInput"  [(ngModel)] = "Themes" name = "theme" multiple>
-                                <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.name}}</mat-option>
+                              <mat-select (change)="selectedTheme($event.target.value)" id="theme" class ="myInput"  [(ngModel)] = "Themes" name = "theme" multiple>
+                                <mat-option *ngFor="let theme of themes" [value]="theme"
+                                [attr.data-themeid] = "theme.id">
+                                {{theme.name}}
+                              </mat-option>
                               </mat-select>
                             </mat-form-field>
 
@@ -105,8 +108,11 @@
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Formatteur</mat-label>
-                              <mat-select id="formatter" class ="myInput"  [(ngModel)] = "Formatters" name = "formatter" multiple>
-                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.userName}}</mat-option>
+                              <mat-select (change)="selectedFormatter($event.target.value)" id="formatter" class ="myInput"  [(ngModel)] = "Formatters" name = "formatter" multiple>
+                                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id"
+                                [attr.data-formid] = "formatter.id">
+                                  {{formatter.userName}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </div>

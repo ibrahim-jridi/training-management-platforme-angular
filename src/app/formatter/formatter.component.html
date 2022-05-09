@@ -1,3 +1,9 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="./assets/CNI(1).png" alt="logo" style="width:40px;">
+  </a>
+  </nav>
 <div class="container" style="margin-top: 100px;" >
 <div class="row">
         <div class="col-lg-4">
@@ -5,7 +11,7 @@
             <div class="card">
               <div class="card-body text-center bg-card rounded-top" >
                <div class="user-box">
-                <img src="retrievedImage" alt="user avatar">
+                <img src = "{{this.formatterService.host+'/api/Imgformatter/'+formatter.userName}}" alt="user avatar">
               </div>
               <h5 class="mb-1 text-white">{{formatter.userName}} </h5>
               <h6 class="text-light"> {{formatter.specialite}} </h6>
@@ -46,7 +52,7 @@
                    <h4 class="mb-1 line-height-5">154</h4>
                     <small class="mb-0 font-weight-bold">Projects</small>
                    </div>
-                    
+
                     <div class="col p-2">
                      <h4 class="mb-1 line-height-5">9.1k</h4>
                      <small class="mb-0 font-weight-bold">Views</small>
@@ -60,7 +66,7 @@
 								Déconnexion
 							</button>
 						</mat-menu> -->
-						
+
                     </div>
                </div>
                <div class="card-footer text-center">
@@ -151,83 +157,89 @@
                     <!--/row-->
                 </div>
                 <div class="tab-pane" id="formations">
-                    <div class="alert alert-info alert-dismissible" role="alert">
-    			   <button type="button" class="close" data-dismiss="alert">×</button>
-				    <div class="alert-icon">
-					 <i class="icon-info"></i>
-				    </div>
-				    <div class="alert-message">
-				      <span><strong>Info!</strong> Lorem Ipsum is simply dummy text.</span>
-				    </div>
+                   <!-- card view -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+                    </div>
+            <span class="fas fa-search search-icon"></span>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+
+                  <div class="col " *ngFor="let formation of formations | filter:searchKey:'title' ">
+                    <div class="card h-100 border-light mb-3" style="max-width: 18rem;">
+                      <img src="./../../assets/edu.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{formation.name}}</h5>
+                        <p class="card-text">{{formation.description}}</p>
+                        <button type="button" [disabled]="timeDiff() ? true : false" (click) = "updateFormation(formation.id)"  class="btn btn-secondary">Activer<i class ="fa-solid fa-pen"></i></button>
+                        <button type="button" (click) = "deleteFormation(formation.id)"  class="btn btn-danger"><i class="fa-solid fa-trash-can" ></i></button>
+
+                      </div>
+                    </div>
                   </div>
-                    <table class="table table-hover table-striped">
-                        <tbody>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                </div>
                 </div>
                 <div class="tab-pane" id="edit">
-                    <form  (ngSubmit) = "onSubmit();">
+                    <form [formGroup]="registerForm"  (ngSubmit) = "onSubmit();">
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userName}} id = "userName"
-                                [(ngModel)] = "formatter.userName" name = "userName">
+                                [(ngModel)] = "formatter.userName" formControlName="userName"
+                                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+                                <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                                  <div *ngIf="f.userName.errors.required">Ce champ est nécessaire</div>
+                              </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Nom</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userFirstName}} id = "userFirstName"
-                                [(ngModel)] = "formatter.userFirstName" name = "userFirstName">
+                                [(ngModel)] = "formatter.userFirstName" formControlName="userFirstName" 
+                                [ngClass]="{ 'is-invalid': submitted && f.userFirstName.errors }" >
+                                <div *ngIf="submitted && f.userFirstName.errors" class="invalid-feedback">
+                                  <div *ngIf="f.userFirstName.errors.required">Ce champ est nécessaire</div>
+                               </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.userLastName}} id = "userLastName"
-                                [(ngModel)] = "formatter.userLastName" name = "userLastName">
+                                [(ngModel)] = "formatter.userLastName" formControlName="userLastName"
+                                [ngClass]="{ 'is-invalid': submitted && f.userLastName.errors }">
+                                <div *ngIf="submitted && f.userLastName.errors" class="invalid-feedback">
+                                  <div *ngIf="f.userLastName.errors.required">Ce champ est nécessaire</div>
+                              </div>
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Email</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="email" value={{formatter.email}} id = "email"
-                                [(ngModel)] = "formatter.email" name = "email">
+                                [(ngModel)] = "formatter.email" formControlName="email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                  <div *ngIf="f.email.errors.required">Ce champ est nécessaire</div>
+                                  <div *ngIf="f.email.errors.email">l'email doit étre en format correcte</div>
+                              </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
-                            <div class=" col-md-6 col-lg-9">
+                            <!-- <div class=" col-md-6 col-lg-9">
                                 <input class="form-control" type="file" accept="image/*" (change)="onFileChanged($event)">
                             </div>
                             <div class="col-md-6">
                               <input type="button" (click)="onUpload()"  value="upload">
-                          </div>
+                            </div> -->
+
+
+                                  <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                                  <img [src]="imgURL" height="200" *ngIf="imgURL">
+
                         </div>
                         <div *ngIf="selectedFile" class="progress my-3">
                           <div
@@ -255,7 +267,12 @@
                             <label class="col-lg-3 col-form-label form-control-label">Address</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="text" value={{formatter.adresse}} id = "adresse"
-                                [(ngModel)] = "formatter.adresse" name = "adresse">
+                                [(ngModel)] = "formatter.adresse" formControlName="adresse"
+                                [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                  <div *ngIf="f.email.errors.required">Ce champ est nécessaire</div>
+                                 
+                              </div>
                             </div>
                         </div>
                         <!-- <div class="form-group row">
@@ -273,14 +290,24 @@
                             <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" value={{formatter.userPassword}} value="{{formatter.userPassword}}" id = "userPassword"
-                                [(ngModel)] = "formatter.userPassword" name = "userPassword">
+                                [(ngModel)] = "formatter.userPassword" formControlName="userPassword"
+                                [ngClass]="{ 'is-invalid': submitted && f.userPassword.errors }">
+                                <div *ngIf="submitted && f.userPassword.errors" class="invalid-feedback">
+                                  <div *ngIf="f.userPassword.errors.required">Ce champ est nécessaire</div>
+                                  <div *ngIf="f.userPassword.errors.minlength">Le mot de passe doit dépasse 6 chiffres</div>
+                              </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" value={{formatter.userConfirmPassword}} value="{{formatter.userConfirmPassword}}" id = "userconfirmPassword"
-                                [(ngModel)] = "formatter.userConfirmPassword" name = "userConfirmPassword">
+                                [(ngModel)] = "formatter.userConfirmPassword" formControlName="userConfirmPassword"
+                                [ngClass]="{ 'is-invalid': submitted && f.userConfirmPassword.errors }">
+                                <div *ngIf="submitted && f.userConfirmPassword.errors" class="invalid-feedback">
+                                  <div *ngIf="f.userConfirmPassword.errors.required">Ce champ est nécessaire</div>
+                                  <div *ngIf="f.userConfirmPassword.errors.mustMatch">vérifié le mot de passe</div>
+                              </div>
                                 <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
 
                             </div>
@@ -289,7 +316,7 @@
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
                                 <input type="reset" class="btn btn-secondary" value="Annuler">
-                                <input type="submit" class="btn btn-primary" (click)=" getImage()"  value="Enregistrer">
+                                <input type="submit" class="btn btn-primary"  value="Enregistrer">
                             </div>
                         </div>
                     </form>

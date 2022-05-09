@@ -1,7 +1,7 @@
 import { Formation } from './../_classes/formation';
 import { FormationService } from './../_services/formation.service';
 import { CustomValidators } from './../_classes/custom-validators';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 
@@ -20,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormatterComponent implements OnInit {
   message;
-  //userFile;
+  userFile;
   public imagePath;
   imgURL;
   selectedFile: File;
@@ -33,51 +33,67 @@ export class FormatterComponent implements OnInit {
   formatter: Formatter = {} as Formatter;
   formations: Formation [];
   userName;
-
-  // updateForm = new FormGroup(
-  //   { },
-
-  //   CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
-  // );
+  public searchTerm !: string;
+  searchKey:string ="";
   submitted = false;
+  isEnabled=false;
+  registerForm: FormGroup;
   constructor(private userService: UserService,
     private userAuthService: UserAuthService,
     private router: Router,
-    private formatterService: FormatterService,
+    public formatterService: FormatterService,
     private formationService: FormationService,
     private route: ActivatedRoute,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private formBuilder: FormBuilder
     ) {
 
     }
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      userFirstName: ['', Validators.required],
+      userLastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      userPassword: ['', [Validators.required, Validators.minLength(6)]],
+      userConfirmPassword: ['', Validators.required],
+      adresse: ['', Validators.required],
+      phone: ['', Validators.required, Validators.maxLength(8)],
+  }, {
+      validator: this.MustMatch('password', 'confirmPassword')
+  });
+
+  }
+
+
+  get f() { return this.registerForm.controls; }
+  public MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
+
 
     this.isLoggedIn();
-    //this.getFormatter();
-    //this.getFormationList();
-    // this.id = this.route.snapshot.paramMap.get('id');
-    // this.forFormatter(this.id);
-
-    // this.formatterService.getFormatterById(this.id).subscribe(data => {
-    //   this.formatter = data;
-    // }, error => console.log(error));
-    /*
-     this.formatterService.getFormatterById(this.id).subscribe((formatter:Formatter) => {
-      this.formatter = formatter
-
-      this.userFirstName = formatter.userFirstName;
-      this.userLastName = formatter.userLastName;
-      this.userName = formatter.userName;
-      this.email = formatter.email;
-      this.specialite = formatter.specialite;
-      this.adresse = formatter.adresse;
-      this.phone = formatter.phone;
-  }, (error : ErrorEvent) => {
-      console.log(error)
-  })*/
-  //this.userAuthService.getUserDetails();
- this.getFormatterByName()
+    this.formationService.search.subscribe((val:any)=>{
+      this.searchKey = val;
+    })
+    this.getFormatterByName()
+    this.userName =  localStorage.getItem('userName');
+      this.id =  localStorage.getItem('id');
 
 }
 
@@ -90,13 +106,16 @@ export class FormatterComponent implements OnInit {
     this.userAuthService.clear();
     this.router.navigate(['/login']);
   }
-  // get f() {
-  //   return this.updateForm.controls;
-  // }
+
   onSubmit(){
     CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
     this.submitted = true;
+    const formData = new  FormData();
+    this.formatter = this.formatterService.formData.value;
+    formData.append('formatter', JSON.stringify(this.formatter));
+    formData.append('file',this.userFile);
     this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
+
       window.location.reload();
 
     }
@@ -104,102 +123,32 @@ export class FormatterComponent implements OnInit {
 
   }
 
-// * calling formatter from userController
-  /* forFormatter(id:number) {
-     this.userService.forFormatter(id).subscribe(
-       (formatter:any) => {
-         console.log(formatter);
-         this.formatter = formatter
-
-       this.userFirstName = formatter.userFirstName;
-       this.userLastName = formatter.userLastName;
-       this.userName = formatter.userName;
-       this.email = formatter.email;
-       this.specialite = formatter.specialite;
-       this.adresse = formatter.adresse;
-     this.phone = formatter.phone;
-       },
-       (error)=>{
-         console.log(error);
-       }
-     );
-   }*/
 
 
+onSelectFile(event) {
+  if (event.target.files.length > 0)
+  {
+    const file = event.target.files[0];
+    this.userFile = file;
+   // this.f['profile'].setValue(file);
 
-  // ! called to uplaod the image
-  public onFileChanged(event) {
-    //Select File
-    this.selectedFile = event.target.files[0];
+  var mimeType = event.target.files[0].type;
+  if (mimeType.match(/image\/*/) == null) {
+    this.message = "Only images are supported.";
+    return;
   }
 
-  // TODO: still under work
-// ! select file
-onSelectFile(event) {
-  if (event.target.files.length >0) {
-    const file = event.target.files[0];
-    this.formatter.image = file;
-    var mimeType = event.target.files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
-    var reader = new FileReader();
-    this.imagePath=file;
-    reader.readAsDataURL(file);
-    reader.onload = (_event) => {
-      this.imgURL = reader.result;
-    }
+  var reader = new FileReader();
+
+  this.imagePath = file;
+  reader.readAsDataURL(file);
+  reader.onload = (_event) => {
+    this.imgURL = reader.result;
   }
 }
 
-  // ! Gets called when the user clicks on submit to upload the image
-  onUpload() {
-    console.log(this.selectedFile);
-    this.progress = 0;
-    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-    const uploadImageData = new FormData();
-    if (this.selectedFile != null) {
-      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-      this.httpClient.post(`${environment.image}/upload`, uploadImageData, { observe: 'events', reportProgress: true })
-        .subscribe(event => {
-          if (event.type === HttpEventType.UploadProgress )
-            this.progress = Math.round(100 * event.loaded / event.total);
-          else if (event.type === HttpEventType.Response) {
-            this.message = event.body.toString();
-            console.log(this.message);
-          }
-        });
-    }
-   // uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
-
-    //Make a call to the Spring Boot Application to save the image
-    this.httpClient.post(`${environment.image}/upload`, uploadImageData, { observe: 'response' , reportProgress: true })
-      .subscribe((response) => {
-        if (response.status === 200 ) {
-          this.message = 'Image chargé avec succssé';
-        } else {
-          this.message = 'Image n"est pas chargé';
-        }
-      }
-      );
-
 
   }
-
-    // ! Gets called when the user clicks on retieve image button to get the image from back end
-    getImage() {
-    //Make a call to Sprinf Boot to get the Image Bytes.
-    this.httpClient.get(`${environment.image}/get/` + this.imageName)
-      .subscribe(
-        res => {
-          this.retrieveResonse = res;
-          this.base64Data = this.retrieveResonse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
-      );
-  }
-
   updateFormatter(id) {
     this.formatterService.updateFormatter( id,this.formatter).subscribe(formatter => {
       this.formatter = formatter;
@@ -216,17 +165,59 @@ onSelectFile(event) {
   getFormatterByName() {
     this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
       this.formatter = formatter;
+      this.id = formatter.id;
+      this.formationService.getFormationsList().subscribe(formation => {
+		this.formations = formation;
+        this.formations.forEach(element => {
+          if (element.id_formatter === formatter.id) {
+
+            return element;
+          }
+
+        });
+
+
+      })
+
     })
   }
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.formationService.search.next(this.searchTerm);
+  }
+
+//calculate Period of time
+timeDiff(){
+  var currentDate = new Date();
+  this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
+    this.formatter = formatter;
+    this.id = formatter.id;
+    this.formationService.getFormationsList().subscribe(formation => {
+      this.formations = formation;
+      this.formations.forEach(element => {
+        if (element.date_debut == currentDate) {
+
+          this.isEnabled = true;
+        }
+
+      });
 
 
-//get formation list according to current user
-  
+    })
 
+  })
+ }
+ deleteFormation(id:number){
 
-
+  this.formationService.deleteFormation(id).subscribe( data => {
+    console.log(data);
+    window.location.reload();
+  })
+ }
 
 }
+
 
 
 

@@ -46,7 +46,9 @@ export class UserService {
       responseType: 'text',
     });
   }
-
+  updateUser(id:String, user: User): Observable<User>{
+    return this.httpclient.put<User>(`${environment.updateUserApi}/${id}`, user);
+  }
   public roleMatch(allowedRoles): boolean {
     let isMatch = false;
     const userRoles: any = this.userAuthService.getRoles();

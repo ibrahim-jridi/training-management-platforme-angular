@@ -19,11 +19,14 @@ export class CreateFormationComponent implements OnInit {
 
 
   sideBarOpen = true;
+  id;
   formation: Formation = new Formation();
   Themes :string = "";
-  themes:Theme[]
+  themes:Theme[] ;
   Formatters : string ="";
-  formatters:Formatter[];
+  formatters:Formatter[] ;
+
+
 
   constructor(private formationService: FormationService, private themeService:ThemeService,
     private formatterService:FormatterService, private router: Router) { }
@@ -40,14 +43,43 @@ export class CreateFormationComponent implements OnInit {
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
   }
+  //  * get selected formatter id
+  selectedFormatter(formatter){
+    console.log(formatter.id+" "+formatter.name);
+    const targetIndex = formatter.target;
+    const res = targetIndex.options[targetIndex.selectedIndex].dataset.formid;
+    console.log(res);
+    return res;
+    //here u can access client id and client name and you can do any operations required
+ }
+ // * get selected theme id
+ selectedTheme(theme){
+  console.log(theme.id+" "+theme.name);
+  const targetIndex = theme.target;
+    const res = targetIndex.options[targetIndex.selectedIndex].dataset.themeid;
+    console.log(res);
+  return res;
+
+  //here u can access client id and client name and you can do any operations required
+}
+
+
+//idTheme:number=this.selectedTheme(this.themes);
+
+//idFormatter=this.selectedFormatter(this.formatters);
+idFormatter;idTheme;
+
 
   saveFormation(){
-    this.formationService.createFormation(this.formation).subscribe( data =>{
+    this.formationService.createFormation(this.formation,this.idFormatter,this.idTheme).subscribe( data =>{
       console.log(data);
       this.goToFormationList();
     },
     error => console.log(error));
   }
+
+
+
 
   goToFormationList(){
     this.router.navigate(['admin/formation-list']);

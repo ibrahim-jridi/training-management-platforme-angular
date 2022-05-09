@@ -49,6 +49,9 @@ import { CreateFormationComponent } from './_formations/create-formation/create-
 import { UpdateFormationComponent } from './_formations/update-formation/update-formation.component';
 import { FormationListComponent } from './_formations/formation-list/formation-list.component';
 import { FormationDetailsComponent } from './_formations/formation-details/formation-details.component';
+import { FilterPipe } from './_pipe/filter.pipe';
+import { HighlightDirective } from './_pipe/highlight.directive';
+import { AdProfileComponent } from './ad-profile/ad-profile/ad-profile.component';
 
 
 
@@ -80,6 +83,9 @@ import { FormationDetailsComponent } from './_formations/formation-details/forma
     UpdateFormationComponent,
     FormationListComponent,
     FormationDetailsComponent,
+    FilterPipe,
+    HighlightDirective,
+    AdProfileComponent,
 
   ],
   imports: [

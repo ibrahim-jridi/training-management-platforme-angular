@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   API:'http://localhost:9090',
+  updateUserApi:'http://localhost:9090/user',
   FAPI:'http://localhost:9090/admin/formatters',// get formatter from userDao
   // FAPI2:'http://localhost:9090/admin/Formatters',// get formatter from userDao
   FAPII:'http://localhost:9090/admin/formatterss',// get formatter from formatterDao

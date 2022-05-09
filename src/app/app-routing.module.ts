@@ -1,3 +1,4 @@
+import { AdProfileComponent } from './ad-profile/ad-profile/ad-profile.component';
 import { FormationListComponent } from './_formations/formation-list/formation-list.component';
 import { CreateFormationComponent } from './_formations/create-formation/create-formation.component';
 import { UpdateFormationComponent } from './_formations/update-formation/update-formation.component';
@@ -11,6 +12,7 @@ import { UpdateFormatterComponent } from './update-formatter/update-formatter.co
 import { CreateFormatterComponent } from './create-formatter/create-formatter.component';
 import { FormatterListComponent } from './formatter-list/formatter-list.component';
 // import { RequestResetComponent } from './request-reset/request-reset.component';
+
 import { FormatterComponent } from './formatter/formatter.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -30,6 +32,7 @@ const routes: Routes = [
   { path: 'formatter', component: FormatterComponent ,  canActivate:[AuthGuard], data:{roles:['Formatter']} },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
+  {path: 'admin/ad-profile', component: AdProfileComponent},
   // { path: 'request-reset-password',component: RequestResetComponent},
   // { path: 'response-reset-password/:token', component: ResponseResetComponent},
   // ! Gérer formatteur

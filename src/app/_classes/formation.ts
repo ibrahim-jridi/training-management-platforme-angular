@@ -10,5 +10,6 @@ export class Formation {
   date_creation:Date;
   date_debut:Date;
   date_final:Date;
+  id_formatter:number;
 
 }

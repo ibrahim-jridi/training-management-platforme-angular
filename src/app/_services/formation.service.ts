@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Formation } from './../_classes/formation';
 import { environment } from './../../environments/environment';
 
@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FormationService {
+  public search = new BehaviorSubject<string>("");
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,8 +17,8 @@ export class FormationService {
     return this.httpClient.get<Formation[]>(`${environment.formation}`);
   }
 
-  createFormation(formation: Formation): Observable<Object>{
-    return this.httpClient.post(`${environment.formation}`, formation);
+  createFormation(formation: Formation,idFormatter:any,idTheme:any): Observable<Object>{
+    return this.httpClient.post(`${environment.formation}/${idFormatter}/${idTheme}`, formation);
   }
 
   getFormationById(id: number): Observable<Formation>{

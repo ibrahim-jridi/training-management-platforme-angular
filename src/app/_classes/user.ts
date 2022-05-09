@@ -6,6 +6,7 @@ export class User {
   email: string;
   userPassword:string;
   userConfirmPassword:string;
+  image;
 	phone:string;
   specialite:string;
   adresse:string;

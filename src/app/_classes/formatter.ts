@@ -1,3 +1,4 @@
+import { Formation } from './formation';
 export class Formatter {
   id: number;
   userName: string;
@@ -9,5 +10,6 @@ export class Formatter {
 	phone:string;
   specialite:string;
   adresse:string;
-  image;
+  formation:Formation[];
+  fileName;
 }

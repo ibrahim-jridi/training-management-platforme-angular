@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Formatter } from './../_classes/formatter';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
@@ -10,9 +11,9 @@ const USERNAME_KEY = 'USERNAME';
   providedIn: 'root'
 })
 export class FormatterService {
-
+host : string = "http://localhost:9090";
   // private baseURL = "http://localhost:8080/api/v1/employees";
-
+  public formData:  FormGroup;
   constructor(private httpClient: HttpClient) { }
 
   getFormatterList(): Observable<Formatter[]>{
@@ -24,7 +25,7 @@ export class FormatterService {
     return this.httpClient.post(`${environment.FAPI}`, formatters);
   }
   // * to save in formatterDao
-  createFormatterr(formatters: Formatter): Observable<Object>{
+  createFormatterr(formatters: object): Observable<Object>{
     return this.httpClient.post(`${environment.FAPII}`, formatters);
   }
 
@@ -32,7 +33,7 @@ export class FormatterService {
     return this.httpClient.get<Formatter>(`${environment.FAPII}/${id}`);
   }
 
-  updateFormatter(id:number, formatters: Formatter): Observable<Formatter>{
+  updateFormatter(id:number, formatters: object): Observable<Formatter>{
     return this.httpClient.put<Formatter>(`${environment.FAPII}/${id}`, formatters);
   }
 
