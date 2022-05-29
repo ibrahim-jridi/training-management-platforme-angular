@@ -1,6 +1,401 @@
-<div class="container mt-5">
-    <div class="card text-center" style="padding: 20px; color: red;">
-        <h1>You are User</h1>
-        <h1>{{message}}</h1>
+<!-- Grey with black text -->
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./../../assets/CNI(1).png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
+    </a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a *ngIf="isLoggedIn()" routerLink="/home" class="nav-link">Formation</a>
+      </li>
+     <li class="nav-item">
+      <a *ngIf="!isLoggedIn()" routerLink="/login" class="nav-link">Connexion</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="isLoggedIn()" routerLink="/user" class="nav-link">Profile</a>
+      </li>
+
+    </ul>
+  </div>
+</nav> -->
+<app-home-header></app-home-header>
+<div class="container " style="margin-top: 200px;" >
+<div class="row">
+        <div class="col-lg-4">
+           <div class="profile-card-4 z-depth-3">
+            <div class="card">
+              <div class="card-body text-center bg-card rounded-top" >
+               <div class="user-box">
+                <img src = "https://bootdey.com/img/Content/avatar/avatar7.png" alt="user avatar">
+              </div>
+              <h5 class="mb-1 text-white">{{guest.userName}} </h5>
+
+
+             </div>
+              <div class="card-body">
+                <ul class="list-group shadow-none">
+                  <li class="list-group-item">
+                    <div class="list-icon">
+                      <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="list-details">
+                      <span>{{guest.userFirstName}}</span>
+                      <small>Prénom</small>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="list-icon">
+                      <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="list-details">
+                      <span>{{guest.userLastName}}</span>
+                      <small>Nom</small>
+                    </div>
+                  </li>
+                <li class="list-group-item">
+                  <div class="list-icon">
+                    <i class="fa fa-phone-square"></i>
+                  </div>
+                  <div class="list-details">
+                    <span>{{guest.phone}}</span>
+                    <small>Numéro de téléphone</small>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="list-icon">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <div class="list-details">
+                    <span>{{guest.email}}</span>
+                    <small>Email </small>
+                  </div>
+                </li>
+                <!-- <li class="list-group-item">
+                  <div class="list-icon">
+                    <i class="fa fa-globe"></i>
+                  </div>
+                  <div class="list-details">
+                    <span>{{guest.sp}}</span>
+                    <small>Adresse</small>
+                  </div>
+                </li> -->
+
+                </ul>
+                <div class="row text-center mt-4">
+                  <!-- <div class="col p-2">
+                   <h4 class="mb-1 line-height-5">154</h4>
+                    <small class="mb-0 font-weight-bold">Projects</small>
+                   </div>
+
+                    <div class="col p-2">
+                     <h4 class="mb-1 line-height-5">9.1k</h4>
+                     <small class="mb-0 font-weight-bold">Views</small>
+                    </div> -->
+                 </div>
+				 <div class="  row text-center ml-1 col p-2"  >
+							<button type="button" class="btn btn-danger" (click)="logout()" style="border-radius: 50px 15px;" >Déconnexion</button>
+						<!-- <mat-menu #menu="matMenu">
+							<button mat-menu-item  (click)="logout()" style="background:red;">
+								<mat-icon>exit_to_app</mat-icon>
+								Déconnexion
+							</button>
+						</mat-menu> -->
+
+                    </div>
+               </div>
+               <!-- <div class="card-footer text-center">
+                 <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i class="fa fa-facebook"></i></a>
+                 <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i class="fa fa-google-plus"></i></a>
+                 <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i class="fa fa-behance"></i></a>
+                 <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i class="fa fa-dribbble"></i></a>
+               </div> -->
+             </div>
+           </div>
+        </div>
+        <div class="col-lg-8">
+           <div class="card z-depth-3">
+            <div class="card-body">
+            <ul class="nav nav-pills nav-pills-primary nav-justified">
+                <!-- <li class="nav-item">
+                    <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#formations" data-toggle="pill" class="nav-link active show"><i class="icon-envelope-open"></i> <span class="hidden-xs">Formations</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Modifier profil</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#message" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Message</span></a>
+                </li>
+            </ul>
+            <div class="tab-content p-3">
+                <!-- <div class="tab-pane active show" id="profile">
+                    <h5 class="mb-3">Profile</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <h6>Nom</h6>
+                            <p>
+                                {{guest.userLastName}}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h6>Prénom</h6>
+                            <p>
+                                {{guest.userFirstName}}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h6>Téléphone</h6>
+                            <p>
+                                {{guest.phone}}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h6>Email</h6>
+                            <p>
+                                {{guest.email}}
+                            </p>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <h6>Recent badges</h6>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">react</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">codeply</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">angularjs</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">css3</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">jquery</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">bootstrap</a>
+                            <a href="javascript:void();" class="badge badge-dark badge-pill">responsive-design</a>
+                            <hr>
+                            <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+                            <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                        </div> -->
+                        <!-- <div class="col-md-12">
+                            <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row
+                </div> -->
+                <div class="tab-pane active show" id="formations">
+                   <!-- card view -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+                    </div>
+            <span class="fas fa-search search-icon"></span>
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+
+                  <div class="col " *ngFor="let formation of formations | filter:searchKey:'title' ">
+                    <div class="card h-100 border-light mb-3" style="max-width: 18rem;">
+                      <img src="./../../assets/edu.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{formation.name}}</h5>
+                        <p class="card-text">{{formation.description}}</p>
+                        <button type="button" (click) = "deleteFormation(formation.id)"  class="btn btn-danger"><i class="fa-solid fa-trash-can" ></i></button>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                </div>
+                <div class="tab-pane" id="message">
+                  <!-- card view -->
+                  <main class="chat">
+                    <div class="container">
+                        <div class="chat-content">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+                                        <strong>{{guest.userName}} {{chatMessage.user}}: </strong>
+                                        <span>{{chatMessage.message}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+                            <div class="chat-send row">
+                                <div class="col-2">
+                                    <input type="text" class="form-control" value={{guest.userName}} name="user" id="input-user" ngModel>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </main>
+
+               </div>
+                <div class="tab-pane" id="edit">
+                    <form   (ngSubmit) = "onSubmit();">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{guest.userName}} id = "userName"
+                                [(ngModel)] = "guest.userName" name="userName"
+                                >
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{guest.userFirstName}} id = "userFirstName"
+                                [(ngModel)] = "guest.userFirstName" name="userFirstName"
+                                 >
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{guest.userLastName}} id = "userLastName"
+                                [(ngModel)] = "guest.userLastName" name="userLastName"
+                                >
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="email" value={{guest.email}} id = "email"
+                                [(ngModel)] = "guest.email" name="email"
+                                >
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
+                            <!-- <div class=" col-md-6 col-lg-9">
+                                <input class="form-control" type="file" accept="image/*" (change)="onFileChanged($event)">
+                            </div>
+                            <div class="col-md-6">
+                              <input type="button" (click)="onUpload()"  value="upload">
+                            </div> -->
+
+
+                                  <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                                  <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+                        </div>
+                        <div *ngIf="selectedFile" class="progress my-3">
+                          <div
+                            class="progress-bar progress-bar-info progress-bar-striped"
+                            role="progressbar"
+                            attr.aria-valuenow="{{ progress }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [ngStyle]="{ width: progress + '%' }"
+                          >
+                            {{ progress }}%
+                          </div>
+                        </div>
+                        <hr />
+                        <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+                        <!-- <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Adresse</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value="{{guest.adresse}}" id = "adresse"
+                                [(ngModel)] = "guest.adresse" name = "adresse" >
+                            </div>
+                        </div> -->
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" value={{guest.adresse}} id = "adresse"
+                                [(ngModel)] = "guest.adresse" name="adresse"
+                                >
+
+                            </div>
+                        </div>
+                        <!-- <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" value="" placeholder="City">
+                            </div>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="" placeholder="State">
+                            </div>
+                        </div> -->
+
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value={{guest.userPassword}} value="{{guest.userPassword}}" id = "userPassword"
+                                [(ngModel)] = "guest.userPassword" name="userPassword"
+                                >
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value={{guest.userConfirmPassword}} value="{{guest.userConfirmPassword}}" id = "userconfirmPassword"
+                                [(ngModel)] = "guest.userConfirmPassword" name="userConfirmPassword"
+                                >
+
+                                <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="reset" class="btn btn-secondary" value="Annuler">
+                                <input type="submit" class="btn btn-primary"  value="Enregistrer">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+
     </div>
 </div>
+<script type="text/javascript">
+
+</script>

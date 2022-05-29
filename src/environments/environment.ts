@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   API:'http://localhost:9090',
   updateUserApi:'http://localhost:9090/user',
+  updateFormatterApi:'http://localhost:9090/formatter',//update formatter profile
   FAPI:'http://localhost:9090/admin/formatters',// get formatter from userDao
   // FAPI2:'http://localhost:9090/admin/Formatters',// get formatter from userDao
   FAPII:'http://localhost:9090/admin/formatterss',// get formatter from formatterDao
@@ -15,7 +16,9 @@ export const environment = {
   addUser:'http://localhost:9090/admin/addUser',
   addUser1:'http://localhost:9090/addUser',
   formation:'http://localhost:9090/admin/formations',
-  image:'http://localhost:9090/image'
+  formation1:'http://localhost:9090/formation',
+  image:'http://localhost:9090/image',
+  API_URL : "http://localhost:9090/api"
 };
 
 /*

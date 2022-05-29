@@ -2,24 +2,42 @@
   <!--  -->
 
 
-  <mat-drawer-container>
+  <!-- <mat-drawer-container>
     <mat-drawer mode="side" [opened]="sideBarOpen">
       <!-- <mat-drawer mode="side" opened="true"> -->
-      <app-sidenav></app-sidenav>
+     <!-- <app-sidenav></app-sidenav>
     </mat-drawer>
     <mat-drawer-content>
-      <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+      <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header> -->
           <!-- contenu du profil -->
-          <div class="container-fluid page">
+          <!-- <div class="container-fluid page">
             <div class="d-flex page__box p-3 mt-2">Thème
 
             </div>
-            </div>
+            </div> -->
       <div class="page__content shadow p-3 position-relative">
             <!-- créer thème -->
 
           <div class="container">
-            <div class="myCard">
+            <div mat-dialog-content>
+              <form [formGroup]="themeForm">
+                  <mat-form-field class="mr-3" appearance="outline">
+                      <mat-label>Nom</mat-label>
+                      <input formControlName="name"  type="text"  id="name" name="name" matInput placeholder="Nom"/>
+                  </mat-form-field>
+                  <mat-form-field class="mr-3" appearance="outline">
+                      <mat-label>Description</mat-label>
+                      <input formControlName="description"  type="text" id="description" name="description" matInput placeholder="Description"/>
+                  </mat-form-field>
+
+
+              </form>
+          </div>
+          <div mat-dialog-actions [align]="'end'">
+              <button mat-raised-button color="warn" mat-dialog-close>Annuler</button>
+              <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="addTheme()">{{actionBtn}}</button>
+          </div>
+            <!-- <div class="myCard">
               <div class="row">
                 <div >
                   <div class="myLeftCtn">
@@ -58,9 +76,9 @@
                 </div>
               </div>
 
-        </div>
-          </div>
+        </div> -->
+          <!-- </div>
 
       </div>
     </mat-drawer-content>
-  </mat-drawer-container>
+  </mat-drawer-container> -->

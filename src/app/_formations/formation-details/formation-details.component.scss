@@ -1,112 +1,137 @@
 // @import "../home/home.component.scss";
 
-:host {
+// :host {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+// }
+// mat-drawer {
+//   width: 260px;
+// }
+// mat-drawer-container {
+//   height: 100%;
+// }
+// mat-drawer {
+//   background: #1e293b;
+// }
+
+// .page {
+//   color: white;
+//   padding: 0 1rem;
+//   background: #f1f5f9;
+// }
+// .page__box {
+//   min-height: 120px;
+//   background: #1e293b;
+//   margin: 0 -1rem;
+//   font-size: 36px;
+// }
+
+// //  ? real form
+
+// .container {
+//   position: absolute;
+//   max-width: 700px;
+//   height: 500px;
+//   margin-top: 300px;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+// .myLeftCtn {
+//   position: relative;
+//   background: #fff;
+//   border-radius: 25px;
+//   height: 100%;
+//   padding: 25px;
+//   padding-left: 50px;
+// }
+// .myLeftCtn header {
+//   color: blueviolet;
+//   font-size: 24px;
+//   font-weight: 700;
+//   margin-bottom: 20px;
+// }
+// .row {
+//   height: 100%;
+//   margin: 10px -15px;
+// }
+// .myCard {
+//   position: relative;
+//   background: #fff;
+//   height: 100%;
+//   border-radius: 25px;
+//   -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+//   -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+//   box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+// }
+// .myLeftCtn .myInput {
+//   width: 230px;
+//   border-radius: 25px;
+//   padding: 10px;
+//   padding-left: 50px;
+//   border: none;
+//   -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+//   -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+//   box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+// }
+// .myLeftCtn .myInput:focus {
+//   outline: none;
+// }
+// .myForm {
+//   position: relative;
+//   margin-top: 50px;
+// }
+// .myLeftCtn .butt {
+//   margin: 15px 0 0 170px;
+//   background: linear-gradient(45deg, #bb36fd, #9b00e8);
+//   color: #fff;
+//   width: 230px;
+//   border: none;
+//   border-radius: 25px;
+//   padding: 10px;
+//   -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+//   -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+//   box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+// }
+// .myLeftCtn .butt:hover {
+//   background: linear-gradient(45deg, #3b5175, #1e293b);
+// }
+// .myLeftCtn .butt:focus {
+//   outline: none;
+// }
+// .myLeftCtn .fas {
+//   position: relative;
+//   color: #bb36fd;
+//   left: 36px;
+// }
+// .col_half {
+//   width: 50%;
+//   float: left;
+// }
+.card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: white;
+  background-clip: border-box;
+  border: 1 solid black;
+  border-radius: 0;
 }
-mat-drawer {
-  width: 260px;
+.card-title{
+  font-size: 40px;
+  font-weight: bold;
 }
-mat-drawer-container {
-  height: 100%;
+h3{
+  font-size: 30px;
+  font-weight: bold;
 }
-mat-drawer {
-  background: #1e293b;
+.img-responsive{
+  border: 1 solid black;
+  padding-top: 3em;
 }
-
-.page {
-  color: white;
-  padding: 0 1rem;
-  background: #f1f5f9;
+p{
+  font-size: 20px;
 }
-.page__box {
-  min-height: 120px;
-  background: #1e293b;
-  margin: 0 -1rem;
-  font-size: 36px;
-}
-
-//  ? real form
-
-.container {
-  position: absolute;
-  max-width: 700px;
-  height: 500px;
-  margin-top: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.myLeftCtn {
-  position: relative;
-  background: #fff;
-  border-radius: 25px;
-  height: 100%;
-  padding: 25px;
-  padding-left: 50px;
-}
-.myLeftCtn header {
-  color: blueviolet;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-.row {
-  height: 100%;
-  margin: 10px -15px;
-}
-.myCard {
-  position: relative;
-  background: #fff;
-  height: 100%;
-  border-radius: 25px;
-  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-}
-.myLeftCtn .myInput {
-  width: 230px;
-  border-radius: 25px;
-  padding: 10px;
-  padding-left: 50px;
-  border: none;
-  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-}
-.myLeftCtn .myInput:focus {
-  outline: none;
-}
-.myForm {
-  position: relative;
-  margin-top: 50px;
-}
-.myLeftCtn .butt {
-  margin: 15px 0 0 170px;
-  background: linear-gradient(45deg, #bb36fd, #9b00e8);
-  color: #fff;
-  width: 230px;
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-}
-.myLeftCtn .butt:hover {
-  background: linear-gradient(45deg, #3b5175, #1e293b);
-}
-.myLeftCtn .butt:focus {
-  outline: none;
-}
-.myLeftCtn .fas {
-  position: relative;
-  color: #bb36fd;
-  left: 36px;
-}
-.col_half {
-  width: 50%;
-  float: left;
-}
-

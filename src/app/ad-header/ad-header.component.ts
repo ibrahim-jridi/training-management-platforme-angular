@@ -19,7 +19,8 @@ export class AdHeaderComponent implements OnInit {
     public userService: UserService) {}
 
   ngOnInit(): void {
-    this.getUser();
+    this.getUserByName();
+    this.isLoggedIn();
   }
 
   public isLoggedIn() {
@@ -35,9 +36,11 @@ export class AdHeaderComponent implements OnInit {
     this.toggleSidebarForMe.emit();
   }
    // get user information for jwt token
-   getUser() {
-    this.userService.getUserById(this.id).subscribe(user => {
+
+  getUserByName() {
+    this.userService.findByUserName(this.userService.getUserName()).subscribe(user => {
       this.user = user;
+      this.id = user.id;
     })
   }
 

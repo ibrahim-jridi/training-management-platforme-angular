@@ -1,23 +1,97 @@
+<div class="page__content shadow p-3 position-relative">
+  <!-- créer thème -->
+
+   <h1 mat-dialog-title>Ajouter une formation</h1>
+  <div mat-dialog-content>
+      <form [formGroup]="formationForm">
+          <mat-form-field appearance="outline">
+              <mat-label>Titre</mat-label>
+              <input formControlName="name" id="name" name="name" matInput placeholder="Titre"/>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input formControlName="description" id="description" name="description" matInput placeholder="description"/>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Prix</mat-label>
+              <input formControlName="prix" id="prix" name="prix" matInput placeholder="prix"/>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Lien</mat-label>
+              <input formControlName="lien" id="lien" name="lien" matInput placeholder="Lien"/>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Date de début</mat-label>
+              <input matInput type="date" formControlName="date_debut" id="date_debut" name="date_debut"  placeholder="date"/>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Date de fin</mat-label>
+              <input matInput type="date" formControlName="date_final" id="date_final" name="date_final"  placeholder="date"/>
+          </mat-form-field>
+
+           <mat-form-field appearance="outline">
+              <mat-label>Thème du formation</mat-label>
+                   <mat-select formControlName="theme" name="theme">
+                  <mat-option *ngFor="let theme of themes" [value]="theme.id" >
+                      {{theme.name}}
+                  </mat-option>
+              </mat-select>
+              <!-- <mat-select (change)="selectedTheme($event.target.value)" id="theme"   name = "theme" formControlName="theme" multiple>
+                <mat-option *ngFor="let theme of themes" [value]="theme"
+                [attr.data-themeid] = "theme.id">
+                {{theme.name}}
+              </mat-option>
+              </mat-select>-->
+            </mat-form-field>
+
+           <mat-form-field appearance="outline">
+              <mat-label>Selectionner un formateur</mat-label>
+                   <mat-select formControlName="formatter" name="formatter">
+                  <mat-option *ngFor="let formatter of formatters" [value]="formatter.id">
+                      {{formatter.userName}}
+
+                  </mat-option>
+              </mat-select>
+              <!-- <mat-select (change)="selectedFormatter($event.target.value)" id="formatter"  formControlName="formatter"  name = "formatter" multiple>
+                <mat-option *ngFor="let formatter of formatters" [value]="formatter.id"
+                [attr.data-formid] = "formatter.id">
+                  {{formatter.userName}}
+                </mat-option>
+              </mat-select>-->
+            </mat-form-field>
+
+
+      </form>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Annuler</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="addFormation()">{{actionBtn}}</button>
+  </div>
+
+
+
+
+
 
 <!--  -->
 
-<mat-drawer-container>
-  <mat-drawer mode="side" [opened]="sideBarOpen">
+<!-- <mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen"> -->
     <!-- <mat-drawer mode="side" opened="true"> -->
-    <app-sidenav></app-sidenav>
+    <!-- <app-sidenav></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
-    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header> -->
         <!-- contenu du profil -->
-        <div class="container-fluid page">
+        <!-- <div class="container-fluid page">
           <div class="d-flex page__box p-3 mt-2">Formation
 
           </div>
           </div>
-    <div class="page__content shadow p-3 position-relative">
+    <div class="page__content shadow p-3 position-relative"> -->
           <!-- créer formateur -->
 
-        <div class="container">
+        <!-- <div class="container">
           <div class="myCard">
             <div class="row">
               <div >
@@ -74,11 +148,11 @@
 
                           </div>
 
-                        </div>
+                        </div> -->
                         <!-- make color input with multiple choice -->
 
 
-                        <div class="row clearfix">
+                        <!-- <div class="row clearfix">
                           <div class="col_half">
                             <mat-form-field >
                               <mat-label>Date de début </mat-label>
@@ -129,7 +203,7 @@
 
     </div>
   </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> -->
 
 
 

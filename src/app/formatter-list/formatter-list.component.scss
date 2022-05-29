@@ -39,7 +39,7 @@ mat-drawer {
   transform: translate(-50%, -50%);
 }
 .example-button-row {
-  padding-left: 950px;
+  margin-right:300px;
 }
 
 .mat-form-field {
@@ -85,4 +85,33 @@ padding-top:10px;
   text-align: center;
   font-size: 1.1em;
 
+}
+
+.example-button-row {
+  padding-left: 900px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+mat-table {
+  width: 100%;
+}
+.example-spacer{
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th{
+width: 18%;
 }

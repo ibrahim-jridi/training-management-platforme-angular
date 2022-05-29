@@ -1,3 +1,4 @@
+import { FormationHomeComponent } from './formation-home/formation-home.component';
 import { AdProfileComponent } from './ad-profile/ad-profile/ad-profile.component';
 import { FormationListComponent } from './_formations/formation-list/formation-list.component';
 import { CreateFormationComponent } from './_formations/create-formation/create-formation.component';
@@ -25,14 +26,16 @@ import { AuthGuard } from './_auth/auth.guard';
 // import { ResponseResetComponent } from './response-reset/response-reset.component';
 
 const routes: Routes = [
-   { path: '', redirectTo: 'login', pathMatch: 'full' },
+   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['User']} },
   { path: 'formatter', component: FormatterComponent ,  canActivate:[AuthGuard], data:{roles:['Formatter']} },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   {path: 'admin/ad-profile', component: AdProfileComponent},
+  {path: 'formation-home', component: FormationHomeComponent},
   // { path: 'request-reset-password',component: RequestResetComponent},
   // { path: 'response-reset-password/:token', component: ResponseResetComponent},
   // ! Gérer formatteur
@@ -79,6 +82,7 @@ const routes: Routes = [
   {path: 'admin/update-formation/:id', component: UpdateFormationComponent},
   {path: 'admin/update-formation/:id/formation-list', component: UpdateFormationComponent},
   {path: 'admin/formation-details/:id', component: FormationDetailsComponent},
+  {path: 'formation-details/:id', component: FormationDetailsComponent},
   {path: 'admin/formation-details/:id/formation-list', component: FormationDetailsComponent},
 ];
 

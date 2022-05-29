@@ -1,9 +1,15 @@
+import { User } from './../_classes/user';
+import { WebSocketServiceService } from './../_services/web-socket-service.service';
+import { ChatMessageDto } from './../_classes/chat-message-dto';
+import { GuestService } from './../_services/guest.service';
+import { Guest } from './../_classes/guest';
+
+import { Message } from './../_classes/message';
 import { Formation } from './../_classes/formation';
 import { FormationService } from './../_services/formation.service';
 import { CustomValidators } from './../_classes/custom-validators';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { environment } from './../../environments/environment';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+
 
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Formatter } from './../_classes/formatter';
@@ -11,14 +17,17 @@ import { FormatterService } from './../_services/formatter.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserAuthService } from './../_services/user-auth.service';
 import { UserService } from './../_services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { MustMatch } from '../_classes/must-much';
+
+
 
 @Component({
   selector: 'app-formatter',
   templateUrl: './formatter.component.html',
   styleUrls: ['./formatter.component.css']
 })
-export class FormatterComponent implements OnInit {
+export class FormatterComponent implements OnInit, OnDestroy {
   message;
   userFile;
   public imagePath;
@@ -30,62 +39,45 @@ export class FormatterComponent implements OnInit {
   imageName: any;
   progress = 0;
   id:any;
-  formatter: Formatter = {} as Formatter;
+  Formation:Formation;
+  formatter: any;
   formations: Formation [];
+  @Input()
   userName;
   public searchTerm !: string;
   searchKey:string ="";
   submitted = false;
   isEnabled=false;
   registerForm: FormGroup;
+  //
+  public filteredMessages: Array<Message> = [];
+  // public newMessage: string;
+  // public channel: string;
+  // public receiver: string;
+  // NEW_USER_LIFETIME: number = 1000 * 5;
+  // @Output()
+  //   receiverUpdated = new EventEmitter<string>();
+  //    users: Array<Formatter> = [];
+
   constructor(private userService: UserService,
     private userAuthService: UserAuthService,
+    private guestService: GuestService,
     private router: Router,
     public formatterService: FormatterService,
     private formationService: FormationService,
     private route: ActivatedRoute,
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public webSocketService: WebSocketServiceService
     ) {
 
     }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      userFirstName: ['', Validators.required],
-      userLastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      userPassword: ['', [Validators.required, Validators.minLength(6)]],
-      userConfirmPassword: ['', Validators.required],
-      adresse: ['', Validators.required],
-      phone: ['', Validators.required, Validators.maxLength(8)],
-  }, {
-      validator: this.MustMatch('password', 'confirmPassword')
-  });
+    this.webSocketService.openWebSocket();
 
-  }
-
-
-  get f() { return this.registerForm.controls; }
-  public MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
-
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
-
+	this.formationService.getFormationsList().subscribe(formation => {
+	this.formations = formation;})
 
     this.isLoggedIn();
     this.formationService.search.subscribe((val:any)=>{
@@ -96,6 +88,15 @@ export class FormatterComponent implements OnInit {
       this.id =  localStorage.getItem('id');
 
 }
+ngOnDestroy(): void {
+  this.webSocketService.closeWebSocket();
+}
+sendMessage(sendForm: NgForm) {
+  const chatMessageDto = new ChatMessageDto(sendForm.value.user, sendForm.value.message);
+  this.webSocketService.sendMessage(chatMessageDto);
+  sendForm.controls.message.reset();
+}
+get f() { return this.registerForm.controls; }
 
 
   public isLoggedIn() {
@@ -110,11 +111,11 @@ export class FormatterComponent implements OnInit {
   onSubmit(){
     CustomValidators.mustMatch('userPassword', 'userConfirmPassword') // insert here
     this.submitted = true;
-    const formData = new  FormData();
-    this.formatter = this.formatterService.formData.value;
-    formData.append('formatter', JSON.stringify(this.formatter));
-    formData.append('file',this.userFile);
-    this.formatterService.updateFormatter(this.id, this.formatter).subscribe( data =>{
+     const formData = new  FormData();
+    const formatters = this.formatterService.formData.value;
+     //formData.append('formatter', JSON.stringify(formatters));
+    // formData.append('file',this.userFile);
+    this.formatterService.MisFormatter(this.formatterService.formData.value.id, formData).subscribe( data =>{
 
       window.location.reload();
 
@@ -181,6 +182,8 @@ onSelectFile(event) {
 
     })
   }
+  // get user from jwt token
+
   search(event:any){
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm);
@@ -215,7 +218,19 @@ timeDiff(){
     window.location.reload();
   })
  }
+ 
+  NewTab(id:number) {
+    //get formation by id
+    this.formationService.getFormationById(id).subscribe(formation => {
+      this.Formation = formation;
+      window.open(
+        `${this.Formation.lien}`, "_blank");
 
+    })
+
+
+
+  }
 }
 
 

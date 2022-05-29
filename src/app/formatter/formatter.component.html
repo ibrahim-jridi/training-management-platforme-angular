@@ -19,6 +19,24 @@
              </div>
               <div class="card-body">
                 <ul class="list-group shadow-none">
+                  <li class="list-group-item">
+                    <div class="list-icon">
+                      <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="list-details">
+                      <span>{{formatter.userFirstName}}</span>
+                      <small>Prénom</small>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="list-icon">
+                      <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="list-details">
+                      <span>{{formatter.userLastName}}</span>
+                      <small>Nom</small>
+                    </div>
+                  </li>
                 <li class="list-group-item">
                   <div class="list-icon">
                     <i class="fa fa-phone-square"></i>
@@ -42,13 +60,13 @@
                     <i class="fa fa-globe"></i>
                   </div>
                   <div class="list-details">
-                    <span>{{formatter.adresse}}</span>
-                    <small>Adresse</small>
+                    <span>{{formatter.specialite}}</span>
+                    <small>Spécialité</small>
                   </div>
                 </li>
                 </ul>
                 <div class="row text-center mt-4">
-                  <div class="col p-2">
+                  <!-- <div class="col p-2">
                    <h4 class="mb-1 line-height-5">154</h4>
                     <small class="mb-0 font-weight-bold">Projects</small>
                    </div>
@@ -56,7 +74,7 @@
                     <div class="col p-2">
                      <h4 class="mb-1 line-height-5">9.1k</h4>
                      <small class="mb-0 font-weight-bold">Views</small>
-                    </div>
+                    </div> -->
                  </div>
 				 <div class="  row text-center ml-1 col p-2"  >
 							<button type="button" class="btn btn-danger" (click)="logout()" style="border-radius: 50px 15px;" >Déconnexion</button>
@@ -69,12 +87,12 @@
 
                     </div>
                </div>
-               <div class="card-footer text-center">
+               <!-- <div class="card-footer text-center">
                  <a href="javascript:void()" class="btn-social btn-facebook waves-effect waves-light m-1"><i class="fa fa-facebook"></i></a>
                  <a href="javascript:void()" class="btn-social btn-google-plus waves-effect waves-light m-1"><i class="fa fa-google-plus"></i></a>
                  <a href="javascript:void()" class="list-inline-item btn-social btn-behance waves-effect waves-light"><i class="fa fa-behance"></i></a>
                  <a href="javascript:void()" class="list-inline-item btn-social btn-dribbble waves-effect waves-light"><i class="fa fa-dribbble"></i></a>
-               </div>
+               </div> -->
              </div>
            </div>
         </div>
@@ -82,30 +100,58 @@
            <div class="card z-depth-3">
             <div class="card-body">
             <ul class="nav nav-pills nav-pills-primary nav-justified">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#formations" data-toggle="pill" class="nav-link active show"><i class="icon-envelope-open"></i> <span class="hidden-xs">Formations</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void();" data-target="#formations" data-toggle="pill" class="nav-link"><i class="icon-envelope-open"></i> <span class="hidden-xs">Formations</span></a>
+                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Modifier profil</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Modifié</span></a>
-                </li>
+                  <a href="javascript:void();" data-target="#message" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Messages</span></a>
+              </li>
             </ul>
             <div class="tab-content p-3">
-                <div class="tab-pane active show" id="profile">
+                <!-- <div class="tab-pane active show" id="profile">
                     <h5 class="mb-3">Profile</h5>
                     <div class="row">
-                        <div class="col-md-6">
-                            <h6>spécialité</h6>
-                            <p>
-                                {{formatter.specialite}}
-                            </p>
-                            <h6>Hobbies</h6>
-                            <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
-                            </p>
-                        </div>
+                      <div class="col-md-6">
+
+                        <h6>Nom</h6>
+                        <p>
+                            {{formatter.userLastName}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+
+                        <h6>Prénom</h6>
+                        <p>
+                            {{formatter.userFirstName}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+
+                        <h6>Téléphone</h6>
+                        <p>
+                            {{formatter.phone}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+
+                        <h6>Email</h6>
+                        <p>
+                            {{formatter.email}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+
+                        <h6>Spécialité</h6>
+                        <p>
+                            {{formatter.specialite}}
+                        </p>
+                    </div>
                         <!-- <div class="col-md-6">
                             <h6>Recent badges</h6>
                             <a href="javascript:void();" class="badge badge-dark badge-pill">html5</a>
@@ -121,7 +167,7 @@
                             <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
                             <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
                         </div> -->
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <h5 class="mt-2 mb-3"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
                             <table class="table table-hover table-striped">
                                 <tbody>
@@ -152,14 +198,14 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
+                        </div> -->
+                    <!-- </div> -->
                     <!--/row-->
-                </div>
-                <div class="tab-pane" id="formations">
+                <!-- </div> -->
+                <div class="tab-pane active show" id="formations">
                    <!-- card view -->
                     <div class="form-group">
-                      <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+                      <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="filtrer">
                     </div>
             <span class="fas fa-search search-icon"></span>
                 <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
@@ -168,10 +214,12 @@
                     <div class="card h-100 border-light mb-3" style="max-width: 18rem;">
                       <img src="./../../assets/edu.jpg" class="card-img-top" alt="...">
                       <div class="card-body">
-                        <h5 class="card-title">{{formation.name}}</h5>
+                        <h3 class="card-title">{{formation.name}}</h3>
                         <p class="card-text">{{formation.description}}</p>
-                        <button type="button" [disabled]="timeDiff() ? true : false" (click) = "updateFormation(formation.id)"  class="btn btn-secondary">Activer<i class ="fa-solid fa-pen"></i></button>
-                        <button type="button" (click) = "deleteFormation(formation.id)"  class="btn btn-danger"><i class="fa-solid fa-trash-can" ></i></button>
+						<p class="card-text">{{formation.date_debut | date: 'dd/MM/yyyy'}}</p>
+						<p class="card-text">{{formation.date_final | date: 'dd/MM/yyyy'}}</p>
+                        <button type="button" [disabled]="timeDiff() ? true : false"  (click) = "NewTab(formation.id)"  class="btn btn-secondary">Activer</button>
+                        <!-- <button type="button" (click) = "deleteFormation(formation.id)"  class="btn btn-danger"><i class="fa-solid fa-trash-can" ></i></button> -->
 
                       </div>
                     </div>
@@ -179,147 +227,162 @@
 
                 </div>
                 </div>
+                <div class="tab-pane" id="message">
+                  <!-- Chat -->
+                  <main class="chat">
+                    <div class="container">
+                        <div class="chat-content">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
+                                        <strong>{{chatMessage.user}}: </strong>
+                                        <span>{{chatMessage.message}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+                            <div class="chat-send row">
+                                <div class="col-2">
+                                    <input type="text" class="form-control" name="user" value={{formatter.userName}} id="input-user" ngModel>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="message" id="input-message" ngModel>
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </main>
+                 </div>
+
+
                 <div class="tab-pane" id="edit">
-                    <form [formGroup]="registerForm"  (ngSubmit) = "onSubmit();">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value={{formatter.userName}} id = "userName"
-                                [(ngModel)] = "formatter.userName" formControlName="userName"
-                                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                                <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userName.errors.required">Ce champ est nécessaire</div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Nom</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value={{formatter.userFirstName}} id = "userFirstName"
-                                [(ngModel)] = "formatter.userFirstName" formControlName="userFirstName" 
-                                [ngClass]="{ 'is-invalid': submitted && f.userFirstName.errors }" >
-                                <div *ngIf="submitted && f.userFirstName.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userFirstName.errors.required">Ce champ est nécessaire</div>
-                               </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value={{formatter.userLastName}} id = "userLastName"
-                                [(ngModel)] = "formatter.userLastName" formControlName="userLastName"
-                                [ngClass]="{ 'is-invalid': submitted && f.userLastName.errors }">
-                                <div *ngIf="submitted && f.userLastName.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userLastName.errors.required">Ce champ est nécessaire</div>
-                              </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="email" value={{formatter.email}} id = "email"
-                                [(ngModel)] = "formatter.email" formControlName="email"
-                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                  <div *ngIf="f.email.errors.required">Ce champ est nécessaire</div>
-                                  <div *ngIf="f.email.errors.email">l'email doit étre en format correcte</div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
-                            <!-- <div class=" col-md-6 col-lg-9">
-                                <input class="form-control" type="file" accept="image/*" (change)="onFileChanged($event)">
-                            </div>
-                            <div class="col-md-6">
-                              <input type="button" (click)="onUpload()"  value="upload">
-                            </div> -->
-
-
-                                  <input type="file" accept="image/*" (change)="onSelectFile($event)">
-                                  <img [src]="imgURL" height="200" *ngIf="imgURL">
+                  <form   (ngSubmit) = "onSubmit();">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Pseudo</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" value={{formatter.userName}} id = "userName"
+                            [(ngModel)] = "formatter.userName" name="userName"
+                            >
 
                         </div>
-                        <div *ngIf="selectedFile" class="progress my-3">
-                          <div
-                            class="progress-bar progress-bar-info progress-bar-striped"
-                            role="progressbar"
-                            attr.aria-valuenow="{{ progress }}"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                            [ngStyle]="{ width: progress + '%' }"
-                          >
-                            {{ progress }}%
-                          </div>
-                        </div>
-                        <hr />
-                        <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" value={{formatter.userFirstName}} id = "userFirstName"
+                            [(ngModel)] = "formatter.userFirstName" name="userFirstName"
+                             >
 
-                        <!-- <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Adresse</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="{{formatter.adresse}}" id = "adresse"
-                                [(ngModel)] = "formatter.adresse" name = "adresse" >
-                            </div>
-                        </div> -->
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value={{formatter.adresse}} id = "adresse"
-                                [(ngModel)] = "formatter.adresse" formControlName="adresse"
-                                [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
-                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                  <div *ngIf="f.email.errors.required">Ce champ est nécessaire</div>
-                                 
-                              </div>
-                            </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="text" value="" placeholder="City">
-                            </div>
-                            <div class="col-lg-3">
-                                <input class="form-control" type="text" value="" placeholder="State">
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Prénom</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" value={{formatter.userLastName}} id = "userLastName"
+                            [(ngModel)] = "formatter.userLastName" name="userLastName"
+                            >
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="email" value={{formatter.email}} id = "email"
+                            [(ngModel)] = "formatter.email" name="email"
+                            >
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">image de profil</label>
+                        <!-- <div class=" col-md-6 col-lg-9">
+                            <input class="form-control" type="file" accept="image/*" (change)="onFileChanged($event)">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="button" (click)="onUpload()"  value="upload">
                         </div> -->
 
 
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value={{formatter.userPassword}} value="{{formatter.userPassword}}" id = "userPassword"
-                                [(ngModel)] = "formatter.userPassword" formControlName="userPassword"
-                                [ngClass]="{ 'is-invalid': submitted && f.userPassword.errors }">
-                                <div *ngIf="submitted && f.userPassword.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userPassword.errors.required">Ce champ est nécessaire</div>
-                                  <div *ngIf="f.userPassword.errors.minlength">Le mot de passe doit dépasse 6 chiffres</div>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value={{formatter.userConfirmPassword}} value="{{formatter.userConfirmPassword}}" id = "userconfirmPassword"
-                                [(ngModel)] = "formatter.userConfirmPassword" formControlName="userConfirmPassword"
-                                [ngClass]="{ 'is-invalid': submitted && f.userConfirmPassword.errors }">
-                                <div *ngIf="submitted && f.userConfirmPassword.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userConfirmPassword.errors.required">Ce champ est nécessaire</div>
-                                  <div *ngIf="f.userConfirmPassword.errors.mustMatch">vérifié le mot de passe</div>
-                              </div>
-                                <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
+                              <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                              <img [src]="imgURL" height="200" *ngIf="imgURL">
 
-                            </div>
+                    </div>
+                    <div *ngIf="selectedFile" class="progress my-3">
+                      <div
+                        class="progress-bar progress-bar-info progress-bar-striped"
+                        role="progressbar"
+                        attr.aria-valuenow="{{ progress }}"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        [ngStyle]="{ width: progress + '%' }"
+                      >
+                        {{ progress }}%
+                      </div>
+                    </div>
+                    <hr />
+                    <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+                    <!-- <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Adresse</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" value="{{formatter.adresse}}" id = "adresse"
+                            [(ngModel)] = "formatter.adresse" name = "adresse" >
                         </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Annuler">
-                                <input type="submit" class="btn btn-primary"  value="Enregistrer">
-                            </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Address</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" value={{formatter.adresse}} id = "adresse"
+                            [(ngModel)] = "formatter.adresse" name="adresse"
+                            >
+
                         </div>
-                    </form>
+                    </div>
+                    <!-- <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" value="" placeholder="City">
+                        </div>
+                        <div class="col-lg-3">
+                            <input class="form-control" type="text" value="" placeholder="State">
+                        </div>
+                    </div> -->
+
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Mot de passe</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="password" value={{formatter.userPassword}} value="{{formatter.userPassword}}" id = "userPassword"
+                            [(ngModel)] = "formatter.userPassword" name="userPassword"
+                            >
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Confirmé mot de passe</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="password" value={{formatter.userConfirmPassword}} value="{{formatter.userConfirmPassword}}" id = "userconfirmPassword"
+                            [(ngModel)] = "formatter.userConfirmPassword" name="userConfirmPassword"
+                            >
+
+                            <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+                            <input type="reset" class="btn btn-secondary" value="Annuler">
+                            <input type="submit" class="btn btn-primary"  value="Enregistrer">
+                        </div>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>

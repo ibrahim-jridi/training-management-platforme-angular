@@ -16,9 +16,12 @@ export class FormationService {
   getFormationsList(): Observable<Formation[]>{
     return this.httpClient.get<Formation[]>(`${environment.formation}`);
   }
+  getFormations(): Observable<Formation[]>{
+    return this.httpClient.get<Formation[]>(`${environment.formation1}`);
+  }
 
-  createFormation(formation: Formation,idFormatter:any,idTheme:any): Observable<Object>{
-    return this.httpClient.post(`${environment.formation}/${idFormatter}/${idTheme}`, formation);
+  createFormation(formation: Formation): Observable<any>{
+    return this.httpClient.post(`${environment.formation}`, formation);
   }
 
   getFormationById(id: number): Observable<Formation>{
@@ -26,7 +29,7 @@ export class FormationService {
   }
 
   updateFormation(id: number, formation: Formation): Observable<Object>{
-    return this.httpClient.put(`${environment.formation}/${id}`, formation);
+    return this.httpClient.put(`${environment.formation}/`+id, formation);
   }
 
   deleteFormation(id: number): Observable<Object>{

@@ -37,6 +37,7 @@
     </div>
 </div> -->
 <!--  -->
+<app-home-header></app-home-header>
 <div class="container-fluid">
   <div class="row main-content bg-success text-center">
     <div class="col-md-4 text-center company__info">
@@ -72,7 +73,7 @@
               class="form__input"
               required #userPassword="ngModel"
               [class.is-invalid]="userPassword.invalid && userPassword.touched"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+              
               >
               <small class="text-danger" [class.d-none]="userPassword.valid || userPassword.untouched">Ce champ est nécessaire</small>
             </div>

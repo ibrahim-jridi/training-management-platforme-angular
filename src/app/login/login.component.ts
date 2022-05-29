@@ -37,36 +37,17 @@ export class LoginComponent implements OnInit {
 
           this.userService.getUserName();
           console.log(this.userName);
-          // this.userService.addUser(this.user).subscribe(user => {
-          //   this.user = user;
-          //   this.userService.saveUserName(user.userName);
-          //   this.router.navigate([`/admin`]);
-          // });
+
 
           this.router.navigate(['/admin']);
 
           // this.router.navigate(['/admin/:id']);
         } else if(role === 'Formatter') {
-          // console.log(this.userName);
-          // this.userService.findByUserName(this.userService.getUserName()).subscribe(formatter => {
-          //   this.formatter = formatter;
-          //   this.userService.saveUserName(formatter.userName);
-          //   window.location.replace("/")
-          // })
-          // this.formatterService.findByFormatterName(this.formatterService.getFormatterName()).subscribe(formatter => {
-          //   this.formatter = formatter;
-          //   this.formatterService.saveFormatterName(formatter.userName);
-          //   window.location.replace("/")
-          // })
+
           this.router.navigate(['/formatter']);
         } else if (role === 'User') {
-          console.log(this.userName);
-          this.userService.findByUserName(this.userService.getUserName()).subscribe(user => {
-            this.user = user;
-            this.userService.saveUserName(user.userName);
-            window.location.replace("/")
-          })
-          this.router.navigate(['/user/:id']);
+
+          this.router.navigate(['/user']);
         }
       },
       (error) => {

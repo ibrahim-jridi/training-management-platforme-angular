@@ -1,0 +1,41 @@
+<div mat-dialog-content>
+  <form [formGroup]="guestForm">
+      <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input formControlName="email"  type="email"  id="email" name="email" matInput placeholder="E-mail"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input formControlName="userFirstName"  type="text" id="firstName" name="userFirstName" matInput placeholder="Nom"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input formControlName="userLastName"   type="text" id="lastName" name="userLastName" matInput placeholder="Prénom"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Nom d'utilisateur</mat-label>
+          <input formControlName="userName"  type="text" id="username" name="userName" matInput placeholder="Nom d'utilisateur"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Adresse</mat-label>
+          <input formControlName="adresse"  type="text" id="adresse" name="adresse" matInput placeholder="adresse"/>
+      </mat-form-field>
+<mat-form-field appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input formControlName="phone"  type="text" id="phone" name="phone" matInput placeholder="Téléphone" min="8" maxlength="8"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input formControlName="userPassword"  type="text" id="userPassword" name="userPassword" matInput placeholder="Mot de passe"/>
+      </mat-form-field>
+<mat-form-field appearance="outline">
+          <mat-label>Confirmé mot de passe</mat-label>
+          <input formControlName="userConfirmPassword"  type="text" id="userConfirmPassword" name="userPassword" matInput placeholder="Confirme mot de passe"/>
+      </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Annuler</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="addGuest()">{{actionBtn}}</button>
+</div>

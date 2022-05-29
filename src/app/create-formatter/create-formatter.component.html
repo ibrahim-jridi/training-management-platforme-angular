@@ -1,228 +1,66 @@
 
 <!--  -->
 
-<mat-drawer-container>
+<!-- <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <!-- <mat-drawer mode="side" opened="true"> -->
-    <app-sidenav></app-sidenav>
+   <!--  <app-sidenav></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
-    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header>
+    <app-ad-header (toggleSidebarForMe)="sideBarToggler()"></app-ad-header> -->
+
+
         <!-- contenu du profil -->
-        <div class="container-fluid page">
+        <!-- <div class="container-fluid page">
           <div class="d-flex page__box p-3 mt-2">Formateur
 
           </div>
-          </div>
-    <div class="page__content shadow p-3 position-relative">
-          <!-- créer formateur -->
+          </div> --> 
+          <div mat-dialog-content>
+            <form [formGroup]="formateurForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input formControlName="email"  type="email"  id="email" name="email" matInput placeholder="E-mail"/>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input formControlName="userFirstName"  type="text" id="userFirstName" name="userFirstName" matInput placeholder="Nom"/>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Prénom</mat-label>
+                    <input formControlName="userLastName"   type="text" id="userLastName" name="userLastName" matInput placeholder="Prénom"/>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input formControlName="userName"  type="text" id="userName" name="userName" matInput placeholder="Nom d'utilisateur"/>
+                </mat-form-field>
+				<mat-form-field appearance="outline">
+                    <mat-label>Téléphone</mat-label>
+                    <input formControlName="phone"  type="text" id="phone" name="phone" matInput placeholder="Téléphone" min="8" maxlength="8"/>
+                </mat-form-field>
+				<!-- <mat-form-field appearance="outline">
+                    <mat-label>Spécialité</mat-label>
+                    <input formControlName="specialite"  type="text" id="specialite" name="specialite" matInput placeholder="Spécialité" />
+                </mat-form-field> -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input formControlName="userPassword"  type="text" id="userPassword" name="userPassword" matInput placeholder="Mot de passe"/>
+                </mat-form-field>
+				<mat-form-field appearance="outline">
+                    <mat-label>Confirmé mot de passe</mat-label>
+                    <input formControlName="userConfirmPassword"  type="text" id="userConfirmPassword" name="userPassword" matInput placeholder="Confirme mot de passe"/>
+                </mat-form-field>
 
-        <div class="container">
-          <div class="myCard">
-            <div class="row">
-              <div >
-                <div class="myLeftCtn">
-                  <form [formGroup]="registerForm" class="myForm " (ngSubmit) = "onSubmit()">
-                    <header>Créer un formateur</header>
-                        <div class="row clearfix">
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Pseudo</label>
-                            <div class="form-group">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "userName"
-                              [(ngModel)] = "formatter.userName" formControlName="userName"
-                              [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
-                              >
-                              <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                                <div *ngIf="f.userName.errors.required">Ce champ est nécessaire</div>
-                            </div>
-                              
-                            </div>
-                            <!-- <div class="form-group">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "userName"
-                              [(ngModel)] = "formatter.userName" name = "userName"
-                              required #userName="ngModel"
-                              [class.is-invalid]="userName.invalid && userName.touched">
-                              <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Nom</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "firstName"
-                              [(ngModel)] = "formatter.userFirstName" formControlName="userFirstName" 
-                              [ngClass]="{ 'is-invalid': submitted && f.userFirstName.errors }" 
-                              >
-                              <div *ngIf="submitted && f.userFirstName.errors" class="invalid-feedback">
-                                <div *ngIf="f.userFirstName.errors.required">Ce champ est nécessaire</div>
-                            </div>
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "firstName"
-                              [(ngModel)] = "formatter.userFirstName" name = "firstName"
-                              required #Name="ngModel"
-                              [class.is-invalid]="Name.invalid && Name.touched">
-                              <small class="text-danger" [class.d-none]="Name.valid || Name.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-                        </div>
-                        <div class="row clearfix">
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Prénom</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "lastName"
-                              [(ngModel)] = "formatter.userLastName" formControlName="userLastName"
-                              [ngClass]="{ 'is-invalid': submitted && f.userLastName.errors }"
-                              >
-                              <div *ngIf="submitted && f.userLastName.errors" class="invalid-feedback">
-                                <div *ngIf="f.userLastName.errors.required">Ce champ est nécessaire</div>
-                            </div>
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-user"></i>
-                              <input type="text" class =" myInput" id = "lastName"
-                              [(ngModel)] = "formatter.userLastName" name = "lastName"
-                              required #lName="ngModel"
-                              [class.is-invalid]="lName.invalid && lName.touched">
-                              <small class="text-danger" [class.d-none]="lName.valid || lName.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-
-
-
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Téléphone</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-phone"></i>
-                              <input type="text" class =" myInput" id = "phone"
-                              [(ngModel)] = "formatter.phone" formControlName="phone"
-                              [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
-                              >
-                              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                                <div *ngIf="f.phone.errors.required">Ce champ est nécessaire</div>
-                                <div *ngIf="f.phone.errors.maxlength">numéro de téléphone doit étre 8 chiffres</div>
-                            </div>
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-phone"></i>
-                              <input type="text" class =" myInput" id = "phone"
-                              [(ngModel)] = "formatter.phone" name = "phone"
-                              required #phone="ngModel"
-                              [class.is-invalid]="phone.invalid && phone.touched" pattern="[0-9]{8}" maxlength="8">
-                              <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-                        </div>
-
-                        <div class="row clearfix">
-
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Email</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
-                              <input type="email" class =" myInput" id = "email"
-                              [(ngModel)] = "formatter.email" formControlName="email"
-                              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                               >
-                               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                <div *ngIf="f.email.errors.required">Ce champ est nécessaire</div>
-                                <div *ngIf="f.email.errors.email">l'email doit étre en format correcte</div>
-                            </div>
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-envelope"></i>
-                              <input type="email" class =" myInput" id = "email"
-                              [(ngModel)] = "formatter.email" name = "email"
-                              required #email="ngModel"
-                              [class.is-invalid]="email.invalid && email.touched"
-                              pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' >
-                              <small class="text-danger" [class.d-none]="email.valid || email.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Mot de passe</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-lock"></i>
-                              <input type="password" class ="myInput" id = "userPassword"
-                              [(ngModel)] = "formatter.userPassword" formControlName="userPassword"
-                              [ngClass]="{ 'is-invalid': submitted && f.userPassword.errors }"
-                              >
-                              <div *ngIf="submitted && f.userPassword.errors" class="invalid-feedback">
-                                <div *ngIf="f.userPassword.errors.required">Ce champ est nécessaire</div>
-                                <div *ngIf="f.userPassword.errors.minlength">Le mot de passe doit dépasse 6 chiffres</div>
-                            </div>
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-lock"></i>
-                              <input type="password" class ="myInput" id = "userPassword"
-                              [(ngModel)] = "formatter.userPassword" name = "userPassword"
-                              required #pass="ngModel"
-                              [class.is-invalid]="pass.invalid && pass.touched"
-                              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$">
-                              <small class="text-danger mt-2" [class.d-none]="pass.valid || pass.untouched">Ce champ est nécessaire</small>
-                            </div> -->
-                          </div>
-
-
-                        </div>
-                        <div class="row clearfix">
-
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">Confirmé mot de passe</label>
-                            <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-lock"></i>
-
-                                <input class="myInput" type="password" value={{formatter.userConfirmPassword}}  id = "userConfirmPassword"
-                                [(ngModel)] = "formatter.userConfirmPassword"  formControlName="userConfirmPassword"
-                                [ngClass]="{ 'is-invalid': submitted && f.userConfirmPassword.errors }"
-                                >
-                                <div *ngIf="submitted && f.userConfirmPassword.errors" class="invalid-feedback">
-                                  <div *ngIf="f.userConfirmPassword.errors.required">Ce champ est nécessaire</div>
-                                  <div *ngIf="f.userConfirmPassword.errors.mustMatch">vérifié le mot de passe</div>
-                              </div>
-
-
-                            </div>
-                            <!-- <div class="input_field">
-                              <i aria-hidden="true" class="fas fa fa-lock"></i>
-
-                                <input class="myInput" type="password" value={{formatter.userConfirmPassword}}  id = "userConfirmPassword"
-                                [(ngModel)] = "formatter.userConfirmPassword" name = "userConfirmPassword"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                                >
-                                <!-- <div *ngIf="f.confirmPassword.errors.mustMatch">mot de passe et confirmé mot de passe ne pas correspondant</div> -->
-
-
-                           <!-- </div> -->
-                          </div>
-                          <div class="col_half">
-                            <label style="margin-left: 25px;">photo de profile</label>
-                            <div class="input_field">
-                              <input type="file" accept="image/*" (change)="onSelectFile($event)">
-                                    <img [src]="imgURL" height="200" *ngIf="imgURL">
-                            </div>
-                          </div>
-
-
-                        </div>
-
-                        <input type="submit" class="butt" value="Enregistrer">
-                      </form>
-                </div>
-              </div>
-            </div>
-
-      </div>
+            </form>
+        </div>
+        <div mat-dialog-actions [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Annuler</button>
+            <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="addFormatter();addFormatterr()">{{actionBtn}}</button>
         </div>
 
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+ <!--  </mat-drawer-content>
+</mat-drawer-container> -->
+
 
 
 

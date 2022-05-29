@@ -25,7 +25,7 @@ host : string = "http://localhost:9090";
     return this.httpClient.post(`${environment.FAPI}`, formatters);
   }
   // * to save in formatterDao
-  createFormatterr(formatters: object): Observable<Object>{
+  createFormatterr(formatters: Formatter): Observable<Object>{
     return this.httpClient.post(`${environment.FAPII}`, formatters);
   }
 
@@ -33,8 +33,11 @@ host : string = "http://localhost:9090";
     return this.httpClient.get<Formatter>(`${environment.FAPII}/${id}`);
   }
 
-  updateFormatter(id:number, formatters: object): Observable<Formatter>{
+  updateFormatter(id:number, formatters: Formatter): Observable<Formatter>{
     return this.httpClient.put<Formatter>(`${environment.FAPII}/${id}`, formatters);
+  }
+  MisFormatter(id:number, formatters: any): Observable<Object>{
+    return this.httpClient.put(`${environment.updateFormatterApi}/${id}`, formatters);
   }
 
   deleteFormatter(id: number): Observable<Object>{
